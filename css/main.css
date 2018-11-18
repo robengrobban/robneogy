@@ -1,0 +1,9 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: calc(1vh + 1vw + 0.5vmin);
+	scroll-behavior: smooth;
+}
