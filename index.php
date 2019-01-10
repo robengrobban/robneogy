@@ -60,6 +60,8 @@ include 'php/include/session-start.php';
 			<div>
 				<p>
 					<span class="team-one">LAG 1</span>
+					<span class="team-vs">VS</span>
+					<span class="team-two">LAG 2</span>
 				</p>
 			</div>
 
