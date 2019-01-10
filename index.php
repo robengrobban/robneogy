@@ -48,9 +48,24 @@ include 'php/include/session-start.php';
 		<!--SECTION FÖR UPPKOMMANDE MATCHER-->
 		<div id="upcoming-matches">
 			<h2>Uppkommande matcher</h2>
+
 			<div>
 				<p>
-					<span class= "team-one">LAG 1</span>
+					<span class="team-one">LAG 1</span>
+					<span class="team-vs">VS</span>
+					<span class="team-two">LAG 2</span>
+				</p>
+			</div>
+
+			<div>
+				<p>
+					<span class="team-one">LAG 1</span>
+				</p>
+			</div>
+
+			<div>
+				<p>
+					<span class="team-one">LAG 1</span>
 					<span class="team-vs">VS</span>
 					<span class="team-two">LAG 2</span>
 				</p>

@@ -37,8 +37,8 @@
 	padding: 1%;
 }
 #upcoming-matches div {
-	width:90%;
-	margin: 2% 5%;
+	width: 92%;
+	margin: 3% 4% 6% 4%;
 	overflow: hidden;
 	position: relative;
 	background-color: #70CBFF;
@@ -48,6 +48,18 @@
 	font-size: 2rem;
 	text-align: center;
 	padding: 2%;
+}
+#upcoming-matches div p .team-one {
+	letter-spacing: 0.5rem;
+	padding: 1%;
+}
+#upcoming-matches div p .team-vs {
+	letter-spacing: 1rem;
+	padding: 1% 2%;
+}
+#upcoming-matches div p .team-two {
+	letter-spacing: 0.5rem;
+	padding: 1%;
 }
 
 /*DESKTOP*/
