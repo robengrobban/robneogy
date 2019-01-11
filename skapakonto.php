@@ -59,7 +59,7 @@ include 'php/include/session-start.php';
 			</div>
 
 
-			<button type="submit" name="login">Logga in</button>
+			<button type="submit" name="create">Skapa konto</button>
 
 		</form>
 
