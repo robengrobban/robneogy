@@ -112,7 +112,7 @@
 }
 
 /*DESKTOP*/
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 800px) {
 	#front-page-header {
 		height: 75vh;
 		/*z-index: 11;borttagen tillsvidare*/

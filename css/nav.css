@@ -54,7 +54,7 @@
 }
 
 /*DESKTOP*/
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 800px) {
 	#main-nav {
 		position: -webkit-sticky;
 		position: sticky;
@@ -64,7 +64,7 @@
 	}
 	#main-nav ul li a {
 		float: left;
-		font-size: 1.6rem;
+		font-size: 1.3rem;
 		padding: 1.5% 3%;
 	}
 	#menu {
