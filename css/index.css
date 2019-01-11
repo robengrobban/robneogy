@@ -23,11 +23,16 @@
 	transition: top 2s, opacity 3s;
 }
 
+#container-matches {
+	overflow: hidden;
+	background-color: #EAEAEA;
+}
+
 #upcoming-matches {
 	width: 100%;
 	height: auto;
-	background-color: #EAEAEA;
-	padding: 10% 2%;
+	padding: 2%;
+	float: left;
 }
 #upcoming-matches h2 {
 	width: 100%;
@@ -35,14 +40,16 @@
 	font-size: 1.8rem;
 	letter-spacing: 0.1rem;
 	padding: 1%;
+	border-bottom: 0.1rem solid black;
 }
 #upcoming-matches div {
 	width: 92%;
-	margin: 3% 4% 6% 4%;
+	margin: 4%;
 	overflow: hidden;
 	position: relative;
 	background-color: #70CBFF;
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+	border-radius: 0.3rem;
 }
 #upcoming-matches div p {
 	font-size: 2rem;
@@ -62,10 +69,63 @@
 	padding: 1%;
 }
 
+#completed-matches {
+	width: 100%;
+	height: auto;
+	padding: 2%;
+	float: left;
+	height: 100%;
+}
+#completed-matches h2 {
+	width: 100%;
+	text-align: center;
+	font-size: 1.2rem;
+	letter-spacing: 0.1rem;
+	padding: 1%;
+	border-bottom: 0.1rem solid black;
+}
+#completed-matches div {
+	width: 92%;
+	margin: 4%;
+	overflow: hidden;
+	position: relative;
+	background-color: #60AFDB;
+	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+	border-radius: 0.3rem;
+}
+#completed-matches div p {
+	font-size: 1rem;
+	text-align: center;
+	padding: 2%;
+}
+#completed-matches div p .team-one {
+	letter-spacing: 0.1rem;
+	padding: 1%;
+}
+#completed-matches div p .team-vs {
+	letter-spacing: 0.1rem;
+	padding: 1% 2%;
+}
+#completed-matches div p .team-two {
+	letter-spacing: 0.1rem;
+	padding: 1%;
+}
+
 /*DESKTOP*/
 @media only screen and (min-width: 768px) {
 	#front-page-header {
 		height: 75vh;
 		/*z-index: 11;borttagen tillsvidare*/
+	}
+
+	#upcoming-matches {
+		width: 70%;
+	}
+
+	#completed-matches {
+		width: 30%;
+	}
+	#completed-matches div {
+		margin: 6% 4%;
 	}
 }

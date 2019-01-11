@@ -1,0 +1,15 @@
+footer {
+	border-top: 0.1rem solid black;
+	width: 100%;
+	padding: 2% 3%;
+	background-color: #346078;
+	color: #FFF;
+	position: relative;
+	bottom: 0;
+}
+footer ul {
+	list-style-type: none;
+}
+footer ul li {
+	display: block;
+}

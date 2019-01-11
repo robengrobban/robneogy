@@ -25,7 +25,7 @@ include 'php/include/session-start.php';
 		<script type="text/javascript" src="js/style/animate.js"></script>
 		<!--MENU ÖPPNING MED JS-->
 		<script type="text/javascript" src="js/style/nav.js"></script>
-		
+
 	</head>
 	<body onload="animateFrontHeaderText()">
 
@@ -38,46 +38,84 @@ include 'php/include/session-start.php';
 		<nav id="main-nav">
 			<ul>
 				<li id="menu"><a>Meny</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test</a></li>
+				<li><a href="#">Skapa match</a></li>
+				<li><a href="#">Skapa lag</a></li>
+				<li><a href="skapakonto.php">Skapa konto</a></li>
+				<li><a href="loggain.php">Logga in</a></li>
 			</ul>
 		</nav>
 
-		<!--SECTION FÖR UPPKOMMANDE MATCHER-->
-		<div id="upcoming-matches">
-			<h2>Uppkommande matcher</h2>
+		<div id="container-matches">
+			<!--SECTION FÖR UPPKOMMANDE MATCHER-->
+			<div id="upcoming-matches">
+				<h2>Uppkommande matcher</h2>
+				<!--AUTOMATIKS PÅFYLLNING AV MATCHER-->
+				<div>
+					<p>
+						<span class="team-one">LAG 1</span>
+						<span class="team-vs">VS</span>
+						<span class="team-two">LAG 2</span>
+					</p>
+				</div>
 
-			<div>
-				<p>
-					<span class="team-one">LAG 1</span>
-					<span class="team-vs">VS</span>
-					<span class="team-two">LAG 2</span>
-				</p>
+				<div>
+					<p>
+						<span class="team-one">LAG 1</span>
+						<span class="team-vs">VS</span>
+						<span class="team-two">LAG 2</span>
+					</p>
+				</div>
+
+				<div>
+					<p>
+						<span class="team-one">LAG 1</span>
+						<span class="team-vs">VS</span>
+						<span class="team-two">LAG 2</span>
+					</p>
+				</div>
+
+				<div>
+					<p>
+						<span class="team-one">LAG 1</span>
+						<span class="team-vs">VS</span>
+						<span class="team-two">LAG 2</span>
+					</p>
+				</div>
 			</div>
 
-			<div>
-				<p>
-					<span class="team-one">LAG 1</span>
-					<span class="team-vs">VS</span>
-					<span class="team-two">LAG 2</span>
-				</p>
-			</div>
+			<!--SECTION FÖR AVKLARADE MATCHER-->
+			<div id="completed-matches">
+				<h2>Avklarade matcher</h2>
+				<!--AUTOMATIKS PÅFYLLNING AV MATCHER-->
+				<div>
+					<p>
+						<span class="team-one">LAG 1</span>
+						<span class="team-vs">VS</span>
+						<span class="team-two">LAG 2</span>
+					</p>
+				</div>
 
-			<div>
-				<p>
-					<span class="team-one">LAG 1</span>
-					<span class="team-vs">VS</span>
-					<span class="team-two">LAG 2</span>
-				</p>
+				<div>
+					<p>
+						<span class="team-one">LAG 1</span>
+						<span class="team-vs">VS</span>
+						<span class="team-two">LAG 2</span>
+					</p>
+				</div>
+
+				<div>
+					<p>
+						<span class="team-one">LAG 1</span>
+						<span class="team-vs">VS</span>
+						<span class="team-two">LAG 2</span>
+					</p>
+				</div>
 			</div>
 		</div>
 
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<?php
+		include 'footer-html.php';
+		?>
 
 	</body>
 </html>
