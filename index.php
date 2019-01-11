@@ -39,7 +39,7 @@ include 'php/include/session-start.php';
 			<ul>
 				<li id="menu"><a>Meny</a></li>
 				<li><a href="#">Skapa match</a></li>
-				<li><a href="#">Skapa lag</a></li>
+				<li><a href="skapalag.php">Skapa lag</a></li>
 				<li><a href="skapakonto.php">Skapa konto</a></li>
 				<li><a href="loggain.php">Logga in</a></li>
 			</ul>
