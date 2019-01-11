@@ -8,7 +8,7 @@
 	background-size: cover;
 	background-attachment: fixed;
 	position: relative;
-	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+	/*box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);borttagen tillsvidare*/
 	z-index: 5;
 }
 #front-page-header h1 {
@@ -66,6 +66,6 @@
 @media only screen and (min-width: 768px) {
 	#front-page-header {
 		height: 75vh;
-		z-index: 11;
+		/*z-index: 11;borttagen tillsvidare*/
 	}
 }
