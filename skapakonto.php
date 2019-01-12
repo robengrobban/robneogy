@@ -27,6 +27,10 @@ include 'php/include/session-start.php';
 			</ul>
 		</nav>
 
+		<header>
+			<h1>Skapa konto</h1>
+		</header>
+
 		<!--FROM FÖR INLOGG-->
 		<form method="POST">
 
