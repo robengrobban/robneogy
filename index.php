@@ -48,7 +48,7 @@ include 'php/include/session-start.php';
 		<div id="container-matches">
 			<!--SECTION FÖR UPPKOMMANDE MATCHER-->
 			<div id="upcoming-matches">
-				<h2>Uppkommande matcher</h2>
+				<h2>Kommande matcher</h2>
 				<!--AUTOMATIKS PÅFYLLNING AV MATCHER-->
 				<div>
 					<p>
@@ -85,7 +85,7 @@ include 'php/include/session-start.php';
 
 			<!--SECTION FÖR AVKLARADE MATCHER-->
 			<div id="completed-matches">
-				<h2>Avklarade matcher</h2>
+				<h2>Avslutade matcher</h2>
 				<!--AUTOMATIKS PÅFYLLNING AV MATCHER-->
 				<div>
 					<p>
