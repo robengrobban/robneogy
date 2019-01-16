@@ -28,7 +28,9 @@ include 'php/include/session-start.php';
 				</ul>
 			</nav>
 		
-		<h1>Skapa Lag</h1>
+		<header>
+			<h1>Skapa Lag</h1>
+		</header>
 
 		<form method="POST">
 			<div id="team-container">
