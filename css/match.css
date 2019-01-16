@@ -80,6 +80,7 @@ header h1 {
 	display: block;
 	width: 100%;
 	color: #ffffff;
+	font-size: 1.3rem;
 }
 #comment-container .comment span {
 	display: block;
@@ -87,6 +88,7 @@ header h1 {
 	color: #ffffff;
 	text-align: right;
 	font-style: italic;
+	font-size: 1.3rem;
 }
 #comment-container #to-comment {
 	width: 90%;
@@ -100,12 +102,14 @@ header h1 {
 	display: block;
 	color: #fff;
 	margin-bottom: 2%;
+	font-size: 1.5rem;
 }
 #comment-container #to-comment textarea {
 	display: block;
 	width: 100%;
 	min-height: 10rem;
 	padding: 2%;
+	font-size: 1.3rem;
 	box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
 }
 #comment-container #to-comment button {
@@ -120,7 +124,7 @@ header h1 {
 	color:#FFF;
 	background-color:#5498BF;
 	transition: background-color 0.2s;
-	font-size: 1rem;
+	font-size: 1.5rem;
 }
 #comment-container #to-comment button:hover {
 	background-color: #427896;
@@ -129,6 +133,7 @@ header h1 {
 /*DESKTOP*/
 @media only screen and (min-width: 800px) {
 
+	
 
 
 }
