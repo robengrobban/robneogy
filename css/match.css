@@ -1,0 +1,134 @@
+/*MOBIL*/
+header h1 {
+	text-align: center;
+	padding-top: 4%;
+}
+
+#match-container {
+	width: 95%;
+	margin: 2.5%;
+	background-color: #579FC7;
+}
+#match-container .vote-container {
+	overflow: hidden;
+	position: relative;
+}
+#match-container #team-one { /*CONTAINER*/
+	display: block;
+	color: #fff;
+	padding: 3%;
+}
+#match-container #team-two { /*CONTAINER*/
+	display: block;
+	color: #fff;
+	padding: 3%;
+}
+#match-container .team-name { /*P*/
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	background-color: #427896;
+	padding: 2%;
+	text-align: center;
+	font-size: 1.5rem;
+}
+#match-container .votes { /*P*/
+	display: block;
+	margin-left: 10%;
+	background-color: #427896;
+	padding: 2%;
+	margin-top: 2%;
+	text-align: center;
+	width: 39%;
+	float: left;
+	font-size: 1.5rem;
+}
+#match-container .to-vote { /*BUTTON*/
+	display: block;
+	margin-left: 2%;
+	background-color: #427896;
+	padding: 2%;
+	margin-top: 2%;
+	text-align: center;
+	width: 39%;
+	color: #fff;
+	float: left;
+	border: 0;
+	cursor: pointer;
+	font-size: 1.5rem;
+}
+#match-container progress {
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+#comment-container {
+	width: 100%;
+	position: relative;
+}
+
+#comment-container .comment {
+	width: 90%;
+	margin: 2.5% 5%;
+	background-color: #579FC7;
+	padding: 2%;
+	display: block;
+}
+#comment-container .comment p {
+	display: block;
+	width: 100%;
+	color: #ffffff;
+}
+#comment-container .comment span {
+	display: block;
+	width: 100%;
+	color: #ffffff;
+	text-align: right;
+	font-style: italic;
+}
+#comment-container #to-comment {
+	width: 90%;
+	margin: 2.5% 5%;
+	display: block;
+	padding: 2%;
+	background-color: #579FC7;
+	position: relative;
+}
+#comment-container #to-comment label {
+	display: block;
+	color: #fff;
+	margin-bottom: 2%;
+}
+#comment-container #to-comment textarea {
+	display: block;
+	width: 100%;
+	min-height: 10rem;
+	padding: 2%;
+	box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+#comment-container #to-comment button {
+	display: block;
+	margin-top: 2%;
+	width: 100%;
+	padding: 2%;
+	cursor: pointer;
+	box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+	border: 0;
+	border-radius: 0.2rem;
+	color:#FFF;
+	background-color:#5498BF;
+	transition: background-color 0.2s;
+	font-size: 1rem;
+}
+#comment-container #to-comment button:hover {
+	background-color: #427896;
+}
+
+/*DESKTOP*/
+@media only screen and (min-width: 800px) {
+
+
+
+}
