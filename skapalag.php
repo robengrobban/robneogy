@@ -29,12 +29,12 @@ include 'php/include/session-start.php';
 			</nav>
 		
 		<header>
-			<h1>Skapa Lag</h1>
+			<h1>Skapa lag</h1>
 		</header>
 
 		<form method="POST">
 			<div id="team-container">
-				<label>Lag namn:</label>
+				<label>Lagnamn:</label>
 				<input required type="text" name="team-name">
 			</div>
 			<button type="submit" name="create">Skapa</button>

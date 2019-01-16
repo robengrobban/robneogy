@@ -66,7 +66,7 @@ include 'php/include/session-start.php';
 
 			<form id="to-comment" method="POST">
 
-				<label>Kommentera:</label>
+				<label>Kommentar:</label>
 				<textarea required form="to-comment" name="the-comment" maxlength="256"></textarea>
 				<button type="submit" name="skicka">Kommentera</button>
 			</form>
