@@ -1,6 +1,13 @@
 <?php
 include 'php/include/main-include.php';
 include 'php/include/session-start.php';
+include 'php/include/clear-data.php';
+
+//Kolla ifall användaren är inloggad
+include 'php/include/is-logged-in.php';
+if ( isLoggedIn() ) {
+	header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="sv">

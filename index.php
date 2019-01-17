@@ -1,6 +1,12 @@
 <?php
 include 'php/include/main-include.php';
 include 'php/include/session-start.php';
+
+//Kolla efter logout förfrågan
+if ( isset($_GET['logout']) ) {
+	include 'php/include/session-destroy.php';
+	header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -40,8 +46,16 @@ include 'php/include/session-start.php';
 				<li id="menu"><a>Meny</a></li>
 				<li><a href="skapalag.php">Skapa lag</a></li>
 				<li><a href="skapamatch.php">Skapa match</a></li>
-				<li><a href="skapakonto.php">Skapa konto</a></li>
-				<li><a href="loggain.php">Logga in</a></li>
+				<?php
+				//Kolla ifall användaren är inloggad
+				include 'php/include/is-logged-in.php';
+				if ( !isLoggedIn() ) {
+					echo '<li><a href="skapakonto.php">Skapa konto</a></li>
+							<li><a href="loggain.php">Logga in</a></li>';
+				} else {
+					echo '<li><a href="index.php?logout">Logga ut</a></li>';
+				}
+				?>
 			</ul>
 		</nav>
 
