@@ -57,11 +57,24 @@ header h1 {
 	border: 0;
 	cursor: pointer;
 	font-size: 1.5rem;
+	transition: background-color 0.2s;
 }
-#match-container progress {
+#match-container .to-vote:hover {
+	background-color: #325c73;
+}
+#match-container #progress {
 	width: 70%;
 	margin-left: 15%;
 	margin-right: 15%;
+	box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
+	border-radius: 0.1rem;
+	background-color: #eaeaeaea;
+	height: 1.5rem;
+}
+#match-container #progress-value {
+	width: 60%;
+	height: 1.5rem;
+	background-color: orange;
 }
 
 #comment-container {
@@ -129,11 +142,64 @@ header h1 {
 #comment-container #to-comment button:hover {
 	background-color: #427896;
 }
+#match-container #progress-container h2 {
+	display: none;
+}
 
 /*DESKTOP*/
 @media only screen and (min-width: 800px) {
 
-	
+	#match-container {
+		overflow: hidden;
+		display: block;
+	}
+	#match-container #team-one {
+		width: 30%;
+		float: left;
+	}
+	#match-container #progress-container {
+		float: left;
+		width: 30%;
+		margin-left: 5%;
+		margin-right: 5%;
+		padding-top:3%;
+	}
+	#match-container #progress-container h2 {
+		display: block;
+		width: 100%;
+		text-align: center;
+		letter-spacing: 0.1rem;
+		font-size: 2rem;
+		color:#fff;
+		margin-bottom: 4%;
+	}
+	#match-container #progress-container #progress {
+		width: 100%;
+		margin: 0;
+	}
+	#match-container #team-two {
+		width: 30%;
+		float: left;
+	}
+
+	#match-container .team-name {
+		display: block;
+		width: 90%;
+		margin-left: 5%;
+		padding: 4%;
+	}
+	#match-container .votes {
+		display: block;
+		width: 90%;
+		margin-left: 5%;
+		padding: 4%;
+	}
+	#match-container .to-vote {
+		display: block;
+		width: 90%;
+		margin-left: 5%;
+		padding: 4%;
+	}
 
 
 }

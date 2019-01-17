@@ -34,14 +34,19 @@ include 'php/include/session-start.php';
 		<div id="match-container">
 
 			<div id="team-one">
-				<p class="team-name">Lag 1</p>
+				<p class="team-name">LAG 1</p>
 				<div class="vote-container">
 					<p class="votes">50</p>
 					<button class="to-vote">Rösta</button>
 				</div>
 			</div>
 
-			<progress></progress>
+			<div id="progress-container">
+				<h2>VS</h2>
+				<div id="progress">
+					<div id="progress-value"></div>
+				</div>
+			</div>
 
 			<div id="team-two">
 				<p class="team-name">Lag 2</p>
@@ -65,7 +70,6 @@ include 'php/include/session-start.php';
 			</section>
 
 			<form id="to-comment" method="POST">
-
 				<label>Kommentar:</label>
 				<textarea required form="to-comment" name="the-comment" maxlength="256"></textarea>
 				<button type="submit" name="skicka">Kommentera</button>
