@@ -38,6 +38,27 @@ if ( isLoggedIn() ) {
 			<h1>Logga in</h1>
 		</header>
 
+		<?php
+		//Kolla så att knappen har klickats och att alla fällt är ifyllda
+		if ( isset($_POST['create']) && 
+			isset($_POST['username']) && clearData($_POST['username']) != "" &&
+			isset($_POST['password']) && clearData($_POST['password']) != "" )
+		{
+
+			//Spara data och rensa den
+			$userName = clearData($_POST['username']);
+			$userPassword = clearData($_POST['password']);
+
+
+		}
+		//Kolla så att man faktiskt har tryckt på knappen
+		else if (isset($_POST['create'])) {
+			echo '<div id="error-msg">
+					<p>Alla fält måste fyllas i!</p>
+				</div>';
+		}
+		?>
+
 		<!--FROM FÖR INLOGG-->
 		<form method="POST">
 

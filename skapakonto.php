@@ -48,7 +48,7 @@ if ( isLoggedIn() ) {
 			isset($_POST['password']) && clearData($_POST['password']) != "" &&
 			isset($_POST['password-rep']) && clearData($_POST['password-rep']) != "") 
 		{
-			//Spara datan
+			//Spara datan och rensa den
 			$userFirstname = clearData($_POST['firstname']);
 			$userLastname = clearData($_POST['lastname']);
 			$userName = clearData($_POST['username']);
