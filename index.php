@@ -7,7 +7,7 @@ if ( isset($_GET['logout']) ) {
 	include 'php/include/session-destroy.php';
 	header("Location: index.php");
 }
-					
+
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -45,7 +45,11 @@ if ( isset($_GET['logout']) ) {
 		<nav id="main-nav">
 			<ul>
 				<li id="menu"><a>Meny</a></li>
-				<li><a href="skapalag.php">Skapa lag</a></li>
+				<?php
+				if ( !isset($_SESSION['user-teamId']) ) {
+					echo '<li><a href="skapalag.php">Skapa lag</a></li>';
+				}
+				?>
 				<li><a href="skapamatch.php">Skapa match</a></li>
 				<?php
 				//Kolla ifall användaren är inloggad

@@ -1,6 +1,18 @@
 <?php
 include 'php/include/main-include.php';
 include 'php/include/session-start.php';
+
+//Kolla ifall användaren int är inloggad
+include 'php/include/is-logged-in.php';
+if ( !isLoggedIn() ) {
+	header("Location: loggain.php");
+}
+
+//Kolla ifall man inte har ett lag
+if ( !isset($_SESSION['user-teamId']) ) {
+	header("Location: php/error.php?error-msg=Du har inget lag!");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="sv">

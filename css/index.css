@@ -2,7 +2,7 @@
 #front-page-header {
 	width: 100%;
 	height: 60vh;
-	background-image: url("../img/placeholder.png");
+	background-image: url("../img/front-page.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -18,6 +18,9 @@
 	position: absolute;
 	top: -10%;
 	left: 50%;
+	color: #fff;
+	padding: 1%;
+	background-color: rgba(0,0,0,0.8);
 	transform: translate(-50%,-50%);
 	opacity: 0;
 	transition: top 2s, opacity 3s;
