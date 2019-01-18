@@ -40,7 +40,7 @@ if ( isLoggedIn() ) {
 
 		<?php
 		//Kolla så att knappen har klickats och att alla fällt är ifyllda
-		if ( isset($_POST['create']) && 
+		if ( isset($_POST['login']) && 
 			isset($_POST['username']) && clearData($_POST['username']) != "" &&
 			isset($_POST['password']) && clearData($_POST['password']) != "" )
 		{
@@ -49,17 +49,66 @@ if ( isLoggedIn() ) {
 			$userName = clearData($_POST['username']);
 			$userPassword = clearData($_POST['password']);
 
+			
+
+			include "php/include/connect-database.php";
+
+
+			$stmt = $conn->prepare("SELECT * FROM account WHERE username =?");
+			$stmt->bind_param ("s",$userName);
+			$stmt->execute();
+
+			$res = $stmt->get_result();
+
+			if ($res->num_rows==0) {
+				echo '<div id="error-msg">
+					<p>Fel användarnamn eller lösenord</p>
+				</div>';
+			}
+			else{
+				$res=$res->fetch_all(MYSQLI_ASSOC)[0];
+				if (password_verify($userPassword, $res["password"])) {
+					$_SESSION["user-id"]=$res["id"];
+					$_SESSION["user-name"]=$res["username"];
+					$_SESSION["user-email"]=$res["mail"];
+					$_SESSION["user-firstname"]=$res["firstname"];
+					$_SESSION["user-lastname"]=$res["lastname"];
+					if (isset($res["teamId"])) {
+						$_SESSION["user-teamId"]=$res["teamId"];
+					}
+					$stmt->close();
+					$conn->close();
+					header("Location: index.php");
+
+				}
+				else{
+				echo '<div id="error-msg">
+					<p>Fel användarnamn eller lösenord</p>
+				</div>';	
+				}
+			}
+			$stmt->close();
+			$conn->close();
+
+
+
+			//kolla om användarnamn.
+			//kolla så att tlösenordet stämmer med användarnamnet.
+			//om det stämmer, låt dem logga in.
+
+
+
 
 		}
 		//Kolla så att man faktiskt har tryckt på knappen
-		else if (isset($_POST['create'])) {
+		else if (isset($_POST['login'])) {
 			echo '<div id="error-msg">
 					<p>Alla fält måste fyllas i!</p>
 				</div>';
 		}
 		?>
 
-		<!--FROM FÖR INLOGG-->
+		<!--FORM FÖR INLOGG-->
 		<form method="POST">
 
 			<div id="username-container">
