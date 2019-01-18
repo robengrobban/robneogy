@@ -7,6 +7,7 @@ if ( isset($_GET['logout']) ) {
 	include 'php/include/session-destroy.php';
 	header("Location: index.php");
 }
+					
 ?>
 <!DOCTYPE html>
 <html lang="sv">
