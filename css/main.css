@@ -16,8 +16,20 @@ html {
 	border: 1rem solid red;
 	padding: 5%;
 }
+#success-msg {
+	width: 100%;
+	text-align: center;
+	display: block;
+	background-color: rgba(0, 255, 0, 0.5);
+	border: 1rem solid green;
+	padding: 5%;
+}
 @media only screen and (min-width: 800px){
 	#error-msg {
+		width: 50%;
+		margin: 5% 25%;
+	}
+	#success-msg {
 		width: 50%;
 		margin: 5% 25%;
 	}
