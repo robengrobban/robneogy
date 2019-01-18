@@ -82,7 +82,7 @@
 #completed-matches h2 {
 	width: 100%;
 	text-align: center;
-	font-size: 1.2rem;
+	font-size: 1.6rem;
 	letter-spacing: 0.1rem;
 	padding: 1%;
 	border-bottom: 0.1rem solid black;
@@ -97,7 +97,7 @@
 	border-radius: 0.3rem;
 }
 #completed-matches div p {
-	font-size: 1rem;
+	font-size: 1.4rem;
 	text-align: center;
 	padding: 2%;
 }
@@ -133,5 +133,8 @@
 	}
 	#completed-matches div {
 		margin: 6% 4%;
+	}
+	#completed-matches div p {
+		font-size: 1.1rem;
 	}
 }
