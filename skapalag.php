@@ -8,6 +8,10 @@ include 'php/include/is-logged-in.php';
 if ( !isLoggedIn() ) {
 	header("Location: loggain.php");
 }
+//Kolla ifall med har ett lag
+if ( isset($_SESSION['user-teamId']) && clearData('user-teamId') != "" ) {
+	header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -81,6 +85,11 @@ if ( !isLoggedIn() ) {
 					//Spara id
 					$userTeamId = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['id'];
 					$_SESSION['user-teamId'] = $userTeamId;
+
+					//Ladda upp ID till databas
+					$stmt = $conn->prepare("UPDATE account SET teamId = ? WHERE id = ?");
+					$stmt->bind_param("ii", $userTeamId, $_SESSION['user-id']);
+					$stmt->execute();
 
 					//Visa ruta att lag skapats
 					echo '<div id="success-msg">
