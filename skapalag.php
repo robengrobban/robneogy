@@ -9,7 +9,7 @@ if ( !isLoggedIn() ) {
 	header("Location: loggain.php");
 }
 //Kolla ifall med har ett lag
-if ( isset($_SESSION['user-teamId']) && clearData('user-teamId') != "" ) {
+if ( isset($_SESSION['user-teamId']) ) {
 	header("Location: index.php");
 }
 ?>
@@ -116,13 +116,17 @@ if ( isset($_SESSION['user-teamId']) && clearData('user-teamId') != "" ) {
 		}
 		?>
 
-		<form method="POST">
-			<div id="team-container">
-				<label>Lagnamn:</label>
-				<input required type="text" name="team-name">
-			</div>
-			<button type="submit" name="create">Skapa</button>
-		</form>
+		<?php
+		if ( !isset($_SESSION['user-teamId']) ) {
+			echo '<form method="POST">
+				<div id="team-container">
+					<label>Lagnamn:</label>
+					<input required type="text" name="team-name">
+				</div>
+				<button type="submit" name="create">Skapa</button>
+			</form>';
+		}
+		?>
 
 		<!--FOOTER-->
 		<?php

@@ -15,6 +15,8 @@ html {
 	background-color: rgba(255, 0, 0, 0.5);
 	border: 1rem solid red;
 	padding: 5%;
+	border-radius: 1rem;
+	margin: 5% 0;
 }
 #success-msg {
 	width: 100%;
@@ -23,6 +25,8 @@ html {
 	background-color: rgba(0, 255, 0, 0.5);
 	border: 1rem solid green;
 	padding: 5%;
+	border-radius: 2rem;
+	margin: 5% 0;
 }
 @media only screen and (min-width: 800px){
 	#error-msg {

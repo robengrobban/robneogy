@@ -33,7 +33,7 @@ include 'include/main-include.php';
 		<?php
 		//Kolla ifall ett errormeddelande finns
 		if (isset($_GET['error-msg'])) {
-			echo $_GET['error-msg'];
+			echo "<div style='width:80;padding:2%;margin:0%10%'>" . $_GET['error-msg'] . "<div>";
 		}
 		?>
 		
