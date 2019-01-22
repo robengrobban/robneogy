@@ -75,7 +75,16 @@ form button:hover {
 #password-container label:last-of-type {
 	padding-top: 3%;
 }
-
+#agreement-container {
+	width: 90%;
+	padding: 2% 5%;
+	margin: 0% 5%;
+	overflow: hidden;
+}
+#agreement-container span {
+	font-size: 1rem;
+	letter-spacing: 0.05rem;
+}
 
 /*DEKSTOP*/
 @media only screen and (min-width: 800px){

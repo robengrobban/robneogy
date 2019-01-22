@@ -163,33 +163,36 @@ if ( isLoggedIn() ) {
 		<form method="POST">
 
 			<div id=firstname-container>
-				<label>Förnamn:</label>
-				<input required type="text" name="firstname">
+				<label for="firstname">Förnamn:</label>
+				<input required type="text" name="firstname" placeholder="Skriv förnamn">
 			</div>
 
 			<div id="lastname-container">
-				<label>Efternamn:</label>
-				<input required type="text" name="lastname">
+				<label for="lastname">Efternamn:</label>
+				<input required type="text" name="lastname" placeholder="Skriv efternamn">
 			</div>
 
 			<div id="username-container">
-				<label>Användarnamn:</label>
-				<input required type="text" name="username">
+				<label for="username">Användarnamn:</label>
+				<input required type="text" name="username" placeholder="Skriv användarnamn">
 			</div>
 
 			<div id=email-container>
-				<label>Email:</label>
-				<input required type="email" name="email">
+				<label for="email">Email:</label>
+				<input required type="email" name="email" placeholder="Skriv email address">
 			</div>
 
 			<div id="password-container">
-				<label>Lösenord:</label>
-				<input required type="password" name="password">
+				<label for="password">Lösenord:</label>
+				<input required type="password" name="password" placeholder="Skriv lösenord">
 
-				<label>Återupprepa lösenord:</label>
-				<input required type="password" name="password-rep">
+				<label for="password-rep">Återupprepa lösenord:</label>
+				<input required type="password" name="password-rep" placeholder="Upprepa lösenord">
 			</div>
 
+			<div id="agreement-container">
+				<span>Genom att skapa ett konto <strong><u>godtjäner jag</u></strong> "Robot Wars Nacka Gymnasiums" <a href="agreement/pp.html" target="_blank"><strong>Integritetspolicy</strong></a> och <a href="agreement/tos.html" target="_blank"><strong>Användarvillkor.</strong></a></span>
+			</div>
 
 			<button type="submit" name="create">Skapa konto</button>
 
