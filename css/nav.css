@@ -53,6 +53,31 @@
 	background-color: #427896;
 }
 
+#agree-nav {
+	width: 100%;
+	background-color: #5498BF;
+}
+#agree-nav ul {
+	list-style-type: none;
+	overflow: hidden;
+}
+#agree-nav ul li a {
+	display: block;
+	font-size: 1.4rem;
+	padding: 2%;
+	text-decoration: none;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	transition: background-color 0.2s;
+	cursor: pointer;
+	width: 50%;
+	float: left;
+}
+#agree-nav ul li a:hover {
+	background-color: #427896;
+}
+
 /*DESKTOP*/
 @media only screen and (min-width: 800px) {
 	#main-nav {

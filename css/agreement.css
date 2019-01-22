@@ -6,11 +6,21 @@ section {
 section h2 {
 	font-size: 3rem;
 	border-bottom: 0.1rem solid #3d3d3d;
-	margin-bottom: -3%;
+	padding-bottom: 0.5%;
+	letter-spacing: 0.1rem;
 }
 section p {
 	font-size: 1rem;
-	margin: 5% 0;
+	margin: 0 0 2% 0;
+}
+section ol {
+	margin: 0 0 2% 6%;
+}
+section ol li {
+	margin-bottom: 1%;
+}
+.list-inside {
+	margin: 2% 0 2% 6%;
 }
 
 @media only screen and (min-width: 800px) {
