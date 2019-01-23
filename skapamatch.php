@@ -66,7 +66,7 @@ if ( !isset($_SESSION['user-teamId']) ) {
 			$res = $res->fetch_all(MYSQLI_ASSOC)[0]['name'];
 
 			//Kolla ifall de är samma
-			if ($res != $searchTeam) {
+			if (strtolower($res) != strtolower($searchTeam)) {
 
 				//Kolla ifall det inskrivna laget finns
 				$stmt = $conn->prepare("SELECT * FROM team WHERE name = ?");
