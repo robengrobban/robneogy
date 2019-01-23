@@ -92,9 +92,7 @@ if ( isset($_SESSION['user-teamId']) ) {
 					$stmt->execute();
 
 					//Visa ruta att lag skapats
-					echo '<div id="success-msg">
-							<p>Laget med namnet '.$userTeamName.' har skapats!</p>
-						</div>';
+					header("Location: php/success.php?success-msg=Laget med namnet ".$userTeamName." har skapats!");
 											
 				}	
 

@@ -8,17 +8,20 @@
 
 include 'include/clear-data.php';
 
-if ( isset($_POST['search-team']) && clearData($_POST['search-team']) != "" ) {
+if ( isset($_POST['search-team']) && isset($_POST['team-id']) ) {
 
 	//Hämta datan
 	$searchTeam = clearData($_POST['search-team']);
+	$teamId = clearData($_POST['team-id']);
+	//Fixa data
+	$searchTeam = "%" . $searchTeam . "%";
 
 	//Anslut till databasen
 	include 'include/connect-database.php';
 
 	//Förbered en fråga
-	$stmt = $conn->prepare("SELECT * FROM team WHERE name = ?");
-	$stmt->bind_param("s", "%" . $searchTeam . "%");
+	$stmt = $conn->prepare("SELECT * FROM team WHERE name LIKE ? AND id != ?");
+	$stmt->bind_param("si", $searchTeam, $teamId);
 	//Kör frågan
 	$stmt->execute();
 
@@ -28,8 +31,10 @@ if ( isset($_POST['search-team']) && clearData($_POST['search-team']) != "" ) {
 	//Stäng anslutningar
 	$stmt->close();
 
+} else {
+	//Skicka till error sidan ifall användare är här
+	header("Location: error.php?error-msg=Åtkomst nekad!");
 }
-//Skicka till error sidan ifall användare är här
-header("Location: error.php?error-msg=Åtkomst nekad!");
+
 
 ?>

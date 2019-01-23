@@ -117,8 +117,8 @@ if ( isLoggedIn() ) {
 							$stmt->close();
 							$conn->close();
 
-							//Skicka oss till startsidan
-							header("Location: index.php");
+							//Lyckades
+							header("Location: php/success.php?success-msg=Hej! " . $userFirstname . " " . $userLastname . ". Ditt konto med namnet " . $userName . " har skapats!");
 							
 						}
 

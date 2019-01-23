@@ -38,6 +38,7 @@ form ul li a {
 	padding: 2%;
 	background-color: #FFF;
 	transition: background-color 0.2s;
+	cursor: pointer;
 }
 form ul li a:hover {
 	background-color: #AAA;
