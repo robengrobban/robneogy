@@ -54,15 +54,15 @@ if ( isLoggedIn() ) {
 			include "php/include/connect-database.php";
 
 
-			$stmt = $conn->prepare("SELECT * FROM account WHERE username =?");
-			$stmt->bind_param ("s",$userName);
+			$stmt = $conn->prepare("SELECT * FROM account WHERE username = ? OR mail = ?");
+			$stmt->bind_param ("ss", $userName, $userName);
 			$stmt->execute();
 
 			$res = $stmt->get_result();
 
 			if ($res->num_rows==0) {
 				echo '<div id="error-msg">
-					<p>Fel användarnamn eller lösenord</p>
+					<p>Fel användarnamn/email eller lösenord</p>
 				</div>';
 			}
 			else{

@@ -88,38 +88,54 @@ if ( isLoggedIn() ) {
 									<p>Användarnamnet är redan upptaget!</p>
 								</div>';
 						} else {
-							//Skapa konto
-							$stmt = $conn->prepare("INSERT INTO account (username, mail, firstname, lastname, password) VALUES (?,?,?,?,?)");
-							$stmt->bind_param("sssss", $userName, $userEmail, $userFirstname, $userLastname, $userPassword);
-
-							//Hasha lösenordet
-							$userPassword = password_hash($userPassword, PASSWORD_DEFAULT);echo '<br>';
-							
-							//Skapa konto
+							//Kolla ifall emailen är använd
+							//Förbered en fråga
+							$stmt = $conn->prepare('SELECT username FROM account WHERE mail = ?');
+							$stmt->bind_param("s", $userEmail);
 							$stmt->execute();
-							
 
-							//Hämta ID för skapade kontot
-							$stmt = $conn->prepare("SELECT id FROM account WHERE username = ?");
-							$stmt->bind_param("s", $userName);
-							$stmt->execute();
-							//Spara id
-							$userId = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['id'];
+							//Spara reslutatet
+							$res = $stmt->get_result();
 
-							//Spara i sessionen våra värden
-							$_SESSION['user-id'] = $userId;
-							$_SESSION['user-name'] = $userName;
-							$_SESSION['user-email'] = $userEmail;
-							$_SESSION['user-firstname'] = $userFirstname;
-							$_SESSION['user-lastname'] = $userLastname;
-							
-							//Stäng anslutningar
-							$stmt->close();
-							$conn->close();
+							//Kolla ifall det finns några svar.
+							if ( $res && $res->num_rows > 0 ) {
+								//Finns ett konto! Avbryt
+								echo '<div id="error-msg">
+										<p>Email addressen är redan upptaget!</p>
+									</div>';
+							} else {
+								//Skapa konto
+								$stmt = $conn->prepare("INSERT INTO account (username, mail, firstname, lastname, password) VALUES (?,?,?,?,?)");
+								$stmt->bind_param("sssss", $userName, $userEmail, $userFirstname, $userLastname, $userPassword);
 
-							//Lyckades
-							header("Location: php/success.php?success-msg=Hej! " . $userFirstname . " " . $userLastname . ". Ditt konto med namnet " . $userName . " har skapats!");
-							
+								//Hasha lösenordet
+								$userPassword = password_hash($userPassword, PASSWORD_DEFAULT);echo '<br>';
+								
+								//Skapa konto
+								$stmt->execute();
+								
+
+								//Hämta ID för skapade kontot
+								$stmt = $conn->prepare("SELECT id FROM account WHERE username = ?");
+								$stmt->bind_param("s", $userName);
+								$stmt->execute();
+								//Spara id
+								$userId = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['id'];
+
+								//Spara i sessionen våra värden
+								$_SESSION['user-id'] = $userId;
+								$_SESSION['user-name'] = $userName;
+								$_SESSION['user-email'] = $userEmail;
+								$_SESSION['user-firstname'] = $userFirstname;
+								$_SESSION['user-lastname'] = $userLastname;
+								
+								//Stäng anslutningar
+								$stmt->close();
+								$conn->close();
+
+								//Lyckades
+								header("Location: php/success.php?success-msg=Hej! " . $userFirstname . " " . $userLastname . ". Ditt konto med namnet " . $userName . " har skapats!");
+								}
 						}
 
 						//Stäng anslutningar
