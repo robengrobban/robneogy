@@ -207,7 +207,7 @@ if ( isLoggedIn() ) {
 			</div>
 
 			<div id="agreement-container">
-				<span>Genom att skapa ett konto <strong><u>godtjäner jag</u></strong> "Robot Wars Nacka Gymnasiums" <a href="agreement/pp.html" target="_blank"><strong>Integritetspolicy</strong></a> och <a href="agreement/tos.html" target="_blank"><strong>Användarvillkor.</strong></a></span>
+				<span>Genom att skapa ett konto <strong><u>godtjäner jag</u></strong> "Robot Wars Nacka Gymnasiums" <a href="agreement/pp.html" target="_blank"><strong>Sekretesspolicy</strong></a> och <a href="agreement/tos.html" target="_blank"><strong>Användarvillkor.</strong></a></span>
 			</div>
 
 			<button type="submit" name="create">Skapa konto</button>
