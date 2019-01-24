@@ -38,7 +38,13 @@ if ( isset($_GET['logout']) ) {
 
 		<!--HEADER FÖR FRONT TEXT OCH BAKGRUNDSBILD-->
 		<header id="front-page-header">
-			<h1>Robot Wars<br>Nacka Gymnasium</h1>
+			<h1>Robot Wars<br>Nacka Gymnasium
+				<?php
+				if (isset($_SESSION['user-name'])) {
+					echo '<br><span>Välkommen '.$_SESSION["user-name"].'!</span>';
+				}
+				?>
+			</h1>
 		</header>
 
 		<!--NAV FÖR STARTSIDAN-->
@@ -58,7 +64,8 @@ if ( isset($_GET['logout']) ) {
 					echo '<li><a href="skapakonto.php">Skapa konto</a></li>
 							<li><a href="loggain.php">Logga in</a></li>';
 				} else {
-					echo '<li><a href="index.php?logout">Logga ut</a></li>';
+					echo '<li><a href="konto.php">Konto</a></li>
+							<li><a href="index.php?logout">Logga ut</a></li>';
 				}
 				?>
 			</ul>

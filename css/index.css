@@ -25,6 +25,9 @@
 	opacity: 0;
 	transition: top 2s, opacity 3s;
 }
+#front-page-header h1 span {
+	font-size: 1.5rem;
+}
 
 #container-matches {
 	overflow: hidden;

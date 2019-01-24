@@ -41,26 +41,17 @@ form button {
 form button:hover {
 	background-color: #427896;
 }
-
-#username-container {
-	width: 90%;
-	padding: 7% 5%;
-	margin: 0 5%;
-	overflow: hidden;
-}
-
-#password-container {
+.form-container {
 	width: 90%;
 	padding: 2% 5%;
 	margin: 0% 5%;
 	overflow: hidden;
 }
 
-
 /*DEKSTOP*/
 @media only screen and (min-width: 800px){
 	form {
-		width: 50%;
-		margin: 5% 25%;
+		width: 70%;
+		margin: 5% 15%;
 	}
 }

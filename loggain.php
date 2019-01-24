@@ -112,13 +112,13 @@ if ( isLoggedIn() ) {
 		<form method="POST">
 
 			<div id="username-container">
-				<label>Användarnamn:</label>
-				<input required type="text" name="username">
+				<label>Användarnamn eller email:</label>
+				<input required type="text" name="username" placeholder="Skriv användarnamn eller email">
 			</div>
 
 			<div id="password-container">
 				<label>Lösenord:</label>
-				<input required type="password" name="password">
+				<input required type="password" name="password" placeholder="Skriv lösenord">
 			</div>
 
 			<button type="submit" name="login">Logga in</button>
