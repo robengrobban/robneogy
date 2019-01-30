@@ -13,7 +13,7 @@ function loadMatch() {
     xhttp.send("id=-1");
 
     //Vänta på svar
-    xhttp.onreadystatechange = function () {
+    xhttp.onreadystatechange = function() {
         //Kontrollera att rätt typ av svar fås
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
@@ -32,6 +32,16 @@ function loadMatch() {
     };
 	
 }
+
+function showMatch() {
+    //Töm alla containrar
+    
+
+
+
+}
+
+
 
 
 
