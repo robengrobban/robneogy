@@ -37,7 +37,7 @@ if ( isset($_GET['logout']) ) {
 		<script type="text/javascript" src="js/startpage-match.js"></script>
 
 	</head>
-	<body onload="animateFrontHeaderText(), loadMatch()">
+	<body onload="animateFrontHeaderText(), loadMatch(), startMatchLoad()">
 
 		<!--HEADER FÖR FRONT TEXT OCH BAKGRUNDSBILD-->
 		<header id="front-page-header">
@@ -80,7 +80,7 @@ if ( isset($_GET['logout']) ) {
 				<h2>Kommande matcher</h2>
 				<!--AUTOMATIKS PÅFYLLNING AV MATCHER-->
 				<div class="team-container">
-					
+
 					<div>
 						<p>
 							<span class="team-one">LAG 1</span>

@@ -2,9 +2,20 @@
 let jsonMatch;
 let jsonTeam;
 
+//Dynamisk laddning
+let laddning;
+let laddningsTidSekunder = 60; //Sekunder
+
+function startMatchLoad() {
+	laddning = setInterval(loadMatch, (laddningsTidSekunder * 1000));
+}
+function stopMatchLoad() {
+	clearInterval(laddning);
+}
+
 function loadMatch() {
 	//Skapa ett anslutnings objekt
-    var xhttp = new XMLHttpRequest();
+    var xhttp = new XMLHttpRequest();console.log("HELLO!");
 
     //Välj fil att ansluta till
     xhttp.open("POST", "php/getMatchInfo.php", true);
@@ -19,7 +30,7 @@ function loadMatch() {
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
             jsonMatch = this.responseText;
-            
+
             //Kolla ifall svaret innehåller error
             if ( jsonMatch.includes('fel') ) {
                 window.location.href = "php/error.php?error-msg=Fel vid hämtning av lag!";
@@ -31,9 +42,9 @@ function loadMatch() {
 
             //Ladda lagen
             loadTeam();
-        }        
+        }
     };
-	
+
 }
 function loadTeam() {
     //Skapa ett anslutnings objekt
@@ -52,7 +63,7 @@ function loadTeam() {
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
             jsonTeam = this.responseText;
-            
+
             //Kolla ifall svaret innehåller error
             if ( jsonTeam.includes('fel') ) {
                 window.location.href = "php/error.php?error-msg=Fel vid hämtning av match!";
@@ -61,7 +72,7 @@ function loadTeam() {
             //Gör om svaret till JSON
             jsonTeam = JSON.parse(jsonTeam);
             console.log(jsonTeam);
-            
+
             //Visa matcher
             showMatch();
         }
@@ -86,7 +97,7 @@ function showMatch() {
         //Skirv ut där matchen är klar
         if (done == 1) {
             var dom = $("#completed-matches .team-container ");
-        } 
+        }
         //Skriv ut där matchen inte är klar
         else {
             var dom = $("#upcoming-matches .team-container");
@@ -107,7 +118,3 @@ function openMatch(num) {
     //Skicka användaren till en annan sida
     window.location = "match.php?id=" + num;
 }
-
-
-
-
