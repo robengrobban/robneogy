@@ -18,6 +18,12 @@ include 'php/include/session-start.php';
 		<link rel="stylesheet" type="text/css" href="css/nav.css">
 		<link rel="stylesheet" type="text/css" href="css/match.css">
 
+		<!--JQUERY LÄNK-->
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		
+		<!--JS LÄNK-->
+		<script type="text/javascript" src="js/match.js"></script>
+
 	</head>
 	<body>
 		<!--TILLBAKA-->
