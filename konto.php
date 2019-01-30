@@ -1,6 +1,7 @@
 <?php
 include 'php/include/main-include.php';
 include 'php/include/session-start.php';
+include 'php/include/clear-data.php';
 
 //Kolla ifall användaren inte är inloggad
 include 'php/include/is-logged-in.php';
@@ -34,6 +35,34 @@ if ( !isLoggedIn() ) {
 			</ul>
 		</nav>
 
+		<?php
+		if ( isset($_POST['change']) && isset($_POST['firstname']) && clearData($_POST['firstname']) != "" && isset($_POST['lastname']) && clearData($_POST['lastname']) != "" ) {
+			//Hämta data
+			$firstnameIn = clearData($_POST['firstname']);
+			$lastnameIn = clearData($_POST['lastname']);
+
+			//Anslut till databas
+			include 'php/include/connect-database.php';
+
+			//Förbered än fråga
+			$stmt = $conn->prepare('UPDATE account SET firstname = ?, lastname = ? WHERE id = ?');
+			$stmt->bind_param("ssi", $firstnameIn, $lastnameIn, $_SESSION['user-id']);
+			$stmt->execute();
+
+			//Spara nya resultatet
+			$_SESSION['user-firstname'] = $firstnameIn;
+			$_SESSION['user-lastname'] = $lastnameIn;
+
+			//Ladda om sidan
+			header("Location: konto.php");
+
+		} else if (isset($_POST['change'])) {
+			echo '<div id="error-msg">
+					<p>Alla fält måste vara i fyllda!</p>
+				</div>';
+		}
+		?>
+
 		<form method="POST">
 			<header>
 				<h1>Mitt konto: <?php echo $_SESSION['user-name'] ?></h1>
@@ -46,15 +75,15 @@ if ( !isLoggedIn() ) {
 
 			<div class="form-container">
 				<label>Efternamn:</label>
-				<input required name="efternamn" type="text" value="<?php echo $_SESSION['user-lastname'] ?>">
+				<input required name="lastname" type="text" value="<?php echo $_SESSION['user-lastname'] ?>">
 			</div>
 
 			<div class="form-container">
 				<label>Email:</label>
-				<input required name="email" type="email" value="<?php echo $_SESSION['user-email'] ?>">
+				<input disabled="disabled" readonly="readonly" name="email" type="email" value="<?php echo $_SESSION['user-email'] ?>">
 			</div>
 
-			<button type="submit">Uppdatera information</button>
+			<button name='change' type="submit">Uppdatera information</button>
 		</form>
 
 	</body>
