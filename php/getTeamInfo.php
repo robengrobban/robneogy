@@ -30,6 +30,7 @@ if ( isset($_POST['search-team']) && isset($_POST['team-id']) ) {
 
 	//Stäng anslutningar
 	$stmt->close();
+	$conn->close();
 
 } else {
 	//Skicka till error sidan ifall användare är här
