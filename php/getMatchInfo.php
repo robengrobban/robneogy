@@ -18,7 +18,7 @@ include 'include/clear-data.php';
 		//om matchId == -1 så kommer den skriva ut alla matcher.
 		if ($matchId == (-1)) {
 
-			$stmt = $conn->prepare("SELECT * FROM game WHERE ?");
+			$stmt = $conn->prepare("SELECT * FROM game WHERE ? ORDER BY id DESC");
 			$temp = 1;
 			$stmt->bind_param("i", $temp);
 			$stmt->execute();
@@ -32,7 +32,7 @@ include 'include/clear-data.php';
 		//annars skriv ut en specifik match.
 		else{
 
-			$stmt = $conn->prepare("SELECT * FROM game WHERE id = ?");
+			$stmt = $conn->prepare("SELECT * FROM game WHERE id = ? ORDER BY id DESC");
 			$stmt->bind_param("i", $matchId);
 			$stmt->execute();
 

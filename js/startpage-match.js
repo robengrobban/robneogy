@@ -1,5 +1,5 @@
 //JSON data
-let jsonData;
+let jsonMatch;
 let jsonTeam;
 
 function loadMatch() {
@@ -18,31 +18,33 @@ function loadMatch() {
         //Kontrollera att rätt typ av svar fås
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
-            jsonData = this.responseText;
+            jsonMatch = this.responseText;
             
             //Kolla ifall svaret innehåller error
-            if ( jsonData.includes('fel') ) {
+            if ( jsonMatch.includes('fel') ) {
                 window.location.href = "php/error.php?error-msg=Fel vid hämtning av lag!";
             }
 
             //Gör om svaret till JSON
-            jsonData = JSON.parse(jsonData);
-            console.log(jsonData);
-            showMatch();
+            jsonMatch = JSON.parse(jsonMatch);
+            console.log(jsonMatch);
+
+            //Ladda lagen
+            loadTeam();
         }        
     };
 	
 }
-function loadTeam(num1, num2) {
+function loadTeam() {
     //Skapa ett anslutnings objekt
     var xhttp = new XMLHttpRequest();
 
     //Välj fil att ansluta till
-    xhttp.open("POST", "php/getDuoTeamInfo.php", true);
+    xhttp.open("POST", "php/getAllTeamInfo.php", true);
     //POST typ
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     //Skicka förfrågan med bunden variabel
-    xhttp.send("team-one-id=" + num1 + "&team-two-id=" + num2);
+    xhttp.send("confirm=true");
 
     //Vänta på svar
     xhttp.onreadystatechange = function() {
@@ -52,14 +54,16 @@ function loadTeam(num1, num2) {
             jsonTeam = this.responseText;
             
             //Kolla ifall svaret innehåller error
-            if ( jsonData.includes('fel') ) {
+            if ( jsonTeam.includes('fel') ) {
                 window.location.href = "php/error.php?error-msg=Fel vid hämtning av match!";
             }
 
             //Gör om svaret till JSON
-            jsonTeam = JSON.parse(jsonData);
-
+            jsonTeam = JSON.parse(jsonTeam);
+            console.log(jsonTeam);
             
+            //Visa matcher
+            showMatch();
         }
     };
 }
@@ -69,23 +73,40 @@ function showMatch() {
     $(".team-container").empty();
 
     //Gå igenom alla matcher och kolla ifall de är avklarde eller inte
-    for (var i = 0; i < jsonData.length; i++) {
+    for (var i = 0; i < jsonMatch.length; i++) {
         //Kolla ifall matchen är klar eller inte
-        var done = jsonData[i].done;
+        var done = jsonMatch[i].done;
+
+        var teamOneId = jsonMatch[i].teamIdOne;
+        var teamTwoId = jsonMatch[i].teamIdTwo;
+
+        var teamOneName = getName(jsonTeam, teamOneId);
+        var teamTwoName = getName(jsonTeam, teamTwoId);
 
         //Skirv ut där matchen är klar
         if (done == 1) {
-        
+            var dom = $("#completed-matches .team-container ");
         } 
         //Skriv ut där matchen inte är klar
         else {
-
+            var dom = $("#upcoming-matches .team-container");
         }
+        dom.append('<div onclick="openMatch('+jsonMatch[i].id+')"><p><span class="team-one">'+teamOneName+'</span><span class="team-vs">VS</span><span class="team-two">'+teamTwoName+'</span></p></div>');
 
     }
 }
+function getName(jsonData, teamNum) {
+    for (var i = 0; i < jsonData.length; i++) {
+        if (jsonData[i].id == teamNum) {
+            return jsonData[i].name;
+        }
+    }
+}
 
-
+function openMatch(num) {
+    //Skicka användaren till en annan sida
+    window.location = "match.php?id=" + num;
+}
 
 
 

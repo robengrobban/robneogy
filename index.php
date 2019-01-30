@@ -80,6 +80,7 @@ if ( isset($_GET['logout']) ) {
 				<h2>Kommande matcher</h2>
 				<!--AUTOMATIKS PÅFYLLNING AV MATCHER-->
 				<div class="team-container">
+					
 					<div>
 						<p>
 							<span class="team-one">LAG 1</span>
@@ -88,29 +89,6 @@ if ( isset($_GET['logout']) ) {
 						</p>
 					</div>
 
-					<div>
-						<p>
-							<span class="team-one">LAG 1</span>
-							<span class="team-vs">VS</span>
-							<span class="team-two">LAG 2</span>
-						</p>
-					</div>
-
-					<div>
-						<p>
-							<span class="team-one">LAG 1</span>
-							<span class="team-vs">VS</span>
-							<span class="team-two">LAG 2</span>
-						</p>
-					</div>
-
-					<div>
-						<p>
-							<span class="team-one">LAG 1</span>
-							<span class="team-vs">VS</span>
-							<span class="team-two">LAG 2</span>
-						</p>
-					</div>
 				</div>
 			</div>
 
@@ -119,13 +97,6 @@ if ( isset($_GET['logout']) ) {
 				<h2>Avslutade matcher</h2>
 				<!--AUTOMATIKS PÅFYLLNING AV MATCHER-->
 				<div class="team-container">
-					<div>
-						<p>
-							<span class="team-one">LAG 1</span>
-							<span class="team-vs">VS</span>
-							<span class="team-two">LAG 2</span>
-						</p>
-					</div>
 
 					<div>
 						<p>
@@ -135,13 +106,6 @@ if ( isset($_GET['logout']) ) {
 						</p>
 					</div>
 
-					<div>
-						<p>
-							<span class="team-one">LAG 1</span>
-							<span class="team-vs">VS</span>
-							<span class="team-two">LAG 2</span>
-						</p>
-					</div>
 				</div>
 			</div>
 		</div>

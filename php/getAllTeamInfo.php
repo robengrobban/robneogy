@@ -8,26 +8,27 @@
 
 include 'include/clear-data.php';
 
-//Hämta datan
-$teamOneId = clearData($_POST['team-one-id']);
-$teamTwoId = clearData($_POST['team-two-id']);
+if ( isset($_POST['confirm']) ) {
+	//Anslut till databasen
+	include 'include/connect-database.php';
 
-//Anslut till databasen
-include 'include/connect-database.php';
+	//Förbered en fråga
+	$temp = 1;
+	$stmt = $conn->prepare("SELECT * FROM team WHERE ?");
+	$stmt->bind_param("i", $temp);
+	//Kör frågan
+	$stmt->execute();
 
-//Förbered en fråga
-$temp = 1;
-$stmt = $conn->prepare("SELECT * FROM team WHERE ?");
-$stmt->bind_param("i", $temp);
-//Kör frågan
-$stmt->execute();
+	//Skriv ut resultatet i form av JSON
+	echo json_encode( $stmt->get_result()->fetch_all(MYSQLI_ASSOC) );
 
-//Skriv ut resultatet i form av JSON
-echo json_encode( $stmt->get_result()->fetch_all(MYSQLI_ASSOC) );
-
-//Stäng anslutningar
-$stmt->close();
-$conn->close();
-
+	//Stäng anslutningar
+	$stmt->close();
+	$conn->close();
+}
+else {
+	//Skicka till error sidan ifall användare är här
+	header("Location: error.php?error-msg=Åtkomst nekad!");
+}
 
 ?>
