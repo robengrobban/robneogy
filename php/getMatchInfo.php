@@ -16,24 +16,33 @@ include 'include/clear-data.php';
 		$matchId = clearData($_POST['id']);
 
 		//om matchId == -1 så kommer den skriva ut alla matcher.
-		if ($matchId == -1) {
-			$stmt = $conn->prepare("SELECT * FROM match");
+		if ($matchId == (-1)) {
+
+			$stmt = $conn->prepare("SELECT * FROM game WHERE ?");
+			$temp = 1;
+			$stmt->bind_param("i", $temp);
 			$stmt->execute();
+
+			//Skriv ut resultatet i form av JSON
+			echo json_encode( $stmt->get_result()->fetch_all(MYSQLI_ASSOC) );
+
+			$stmt->close();
+
 		}
 		//annars skriv ut en specifik match.
 		else{
 
-			$stmt = $conn->prepare("SELECT * FROM match WHERE id = ?");
+			$stmt = $conn->prepare("SELECT * FROM game WHERE id = ?");
 			$stmt->bind_param("i", $matchId);
 			$stmt->execute();
 
 			//Skriv ut resultatet i form av JSON
 			echo json_encode( $stmt->get_result()->fetch_all(MYSQLI_ASSOC) );
 
+			$stmt->close();
 			
 		}
 			//Stäng anslutningar
-			$stmt->close();
 			$conn->close();
 
 	}

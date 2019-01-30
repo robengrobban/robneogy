@@ -33,8 +33,11 @@ if ( isset($_GET['logout']) ) {
 		<!--MENU ÖPPNING MED JS-->
 		<script type="text/javascript" src="js/style/nav.js"></script>
 
+		<!--VISA MATCHER-->
+		<script type="text/javascript" src="js/startpage-match.js"></script>
+
 	</head>
-	<body onload="animateFrontHeaderText()">
+	<body onload="animateFrontHeaderText(), loadMatch()">
 
 		<!--HEADER FÖR FRONT TEXT OCH BAKGRUNDSBILD-->
 		<header id="front-page-header">
