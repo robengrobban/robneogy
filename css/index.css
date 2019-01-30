@@ -48,7 +48,7 @@
 	padding: 1%;
 	border-bottom: 0.1rem solid black;
 }
-#upcoming-matches div {
+#upcoming-matches .team-container div {
 	width: 92%;
 	margin: 4%;
 	overflow: hidden;
@@ -57,20 +57,20 @@
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 	border-radius: 0.3rem;
 }
-#upcoming-matches div p {
+#upcoming-matches .team-container div p {
 	font-size: 2rem;
 	text-align: center;
 	padding: 2%;
 }
-#upcoming-matches div p .team-one {
+#upcoming-matches .team-container div p .team-one {
 	letter-spacing: 0.5rem;
 	padding: 1%;
 }
-#upcoming-matches div p .team-vs {
+#upcoming-matches .team-container div p .team-vs {
 	letter-spacing: 1rem;
 	padding: 1% 2%;
 }
-#upcoming-matches div p .team-two {
+#upcoming-matches .team-container div p .team-two {
 	letter-spacing: 0.5rem;
 	padding: 1%;
 }
@@ -89,7 +89,7 @@
 	letter-spacing: 0.1rem;
 	padding: 1%;
 }
-#completed-matches div {
+#completed-matches .team-container div {
 	width: 92%;
 	margin: 4%;
 	overflow: hidden;
@@ -98,20 +98,20 @@
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 	border-radius: 0.3rem;
 }
-#completed-matches div p {
+#completed-matches .team-container div p {
 	font-size: 1.4rem;
 	text-align: center;
 	padding: 2%;
 }
-#completed-matches div p .team-one {
+#completed-matches .team-container div p .team-one {
 	letter-spacing: 0.1rem;
 	padding: 1%;
 }
-#completed-matches div p .team-vs {
+#completed-matches .team-container div p .team-vs {
 	letter-spacing: 0.1rem;
 	padding: 1% 2%;
 }
-#completed-matches div p .team-two {
+#completed-matches .team-container div p .team-two {
 	letter-spacing: 0.1rem;
 	padding: 1%;
 }
@@ -126,17 +126,17 @@
 	#upcoming-matches {
 		width: 70%;
 	}
-	#upcoming-matches div p {
+	#upcoming-matches .team-container div p {
 		font-size: 1.6rem;
 	}
 
 	#completed-matches {
 		width: 30%;
 	}
-	#completed-matches div {
+	#completed-matches .team-container div {
 		margin: 6% 4%;
 	}
-	#completed-matches div p {
+	#completed-matches .team-container div p {
 		font-size: 1.1rem;
 	}
 }
