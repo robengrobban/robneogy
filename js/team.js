@@ -3,7 +3,7 @@
 */
 
 //Variabel för team.js filen
-let JSONteam;
+let jsonData;
 
 //Funktion för att ladda lag
 //str String, lagnamnet som ska sökas
@@ -24,18 +24,18 @@ function loadTeam( str , num) {
         //Kontrollera att rätt typ av svar skickas
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
-            JSONteam = this.responseText;
+            jsonData = this.responseText;
             
             //Kolla ifall svaret innehåller error
-            if ( JSONteam.includes('Ajdå, ett fel uppstod!') ) {
+            if ( jsonData.includes('fel') ) {
                 window.location.href = "php/error.php?error-msg=Fel vid hämtning av lag!";
             }
 
             //Gör om svaret till JSON
-            JSONteam = JSON.parse(JSONteam);
+            jsonData = JSON.parse(jsonData);
 
             //Skirv ut svaret
-            printTeam(JSONteam);
+            printTeam(jsonData);
         }
     };
 }
@@ -55,7 +55,7 @@ function printTeam( jsonData ) {
         var lagNamn = jsonData[i].name;
 
         //Lägg till
-        dom.append("<li><a class='team-"+i+"' onclick='selectTeam(JSONteam, "+i+", this)'>"+lagNamn+"</a></li>");
+        dom.append("<li><a class='team-"+i+"' onclick='selectTeam(jsonData, "+i+", this)'>"+lagNamn+"</a></li>");
     }
 }
 
