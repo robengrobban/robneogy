@@ -28,6 +28,9 @@ if ( isset($_GET['logout']) ) {
 		<!--JQUERY LÄNK-->
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
+		<!--FUNKTIONER JS-->
+		<script type="text/javascript" src="js/funktioner.js"></script>
+
 		<!--ANIMATION MED JS-->
 		<script type="text/javascript" src="js/style/animate.js"></script>
 		<!--MENU ÖPPNING MED JS-->
