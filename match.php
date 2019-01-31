@@ -1,6 +1,10 @@
 <?php
 include 'php/include/main-include.php';
 include 'php/include/session-start.php';
+if (!isset($_GET['id'])) {
+	header("Location: index.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -22,13 +26,19 @@ include 'php/include/session-start.php';
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
 		<!-- Funktion JS LÄNK-->
-		<script type="text/javascript" src="js/funktion.js"></script>
+		<script type="text/javascript" src="js/funktioner.js"></script>
 		
 		<!--JS LÄNK-->
 		<script type="text/javascript" src="js/match.js"></script>
 
 	</head>
-	<body>
+	<body 
+
+	<?php
+	echo "onload=loadMatch(".$_GET['id'].")";
+	?>
+
+	>
 		<!--TILLBAKA-->
 		<nav id="back-nav">
 			<ul>
