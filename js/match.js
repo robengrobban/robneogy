@@ -78,10 +78,43 @@ function hamtaLagnamn(lagIdEtt, lagIdTva){
             jsonLag = JSON.parse(jsonLag);
             console.log(jsonLag);
 
-
+            showMatchInfo();
 
         }
     };
 
 
+
+
 }
+
+//hämtar matchdata och skriver ut
+function showMatchInfo(){
+
+	//hämtar lag 1 o 2
+	var teamOneName = getName(jsonLag, jsonData[0].teamIdOne);
+	var teamTwoName = getName(jsonLag, jsonData[0].teamIdTwo);
+
+	console.log(teamOneName+ " " +teamTwoName);
+
+
+
+	$("#match-container #team-one .team-name").text(teamOneName);
+	$("#match-container #team-two .team-name").text(teamTwoName);
+
+	$("#match-container #team-one .vote-container .votes").text(jsonData[0].votesTeamOne);
+	$("#match-container #team-two .vote-container .votes").text(jsonData[0].votesTeamTwo);
+
+	var teamOneRoster = jsonData[0].votesTeamOne;
+	var teamTwoRoster = jsonData[0].votesTeamTwo;
+
+	var diff = teamOneRoster / teamTwoRoster;
+	var pro = diff*100;
+	if(diff == 1){
+		pro = 50;
+	}
+
+	$("#progress-value").css("width", pro+"%");
+
+}
+
