@@ -20,6 +20,9 @@ include 'php/include/session-start.php';
 
 		<!--JQUERY LÄNK-->
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+		<!-- Funktion JS LÄNK-->
+		<script type="text/javascript" src="js/funktion.js"></script>
 		
 		<!--JS LÄNK-->
 		<script type="text/javascript" src="js/match.js"></script>

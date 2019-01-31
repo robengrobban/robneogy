@@ -4,8 +4,7 @@
 
 //variabel för match.js filen
 let jsonData;
-let lagEttNamn;
-let lagTvaNamn;
+let jsonLag;
 
 //Funktion för att ladda match
 //num int, id för den specifika matchen
@@ -40,6 +39,8 @@ function loadMatch(num){
             //kolla jsonData
             console.log(jsonData);
 
+            hamtaLagnamn(jsonData[0].teamIdOne,jsonData[0].teamIdTwo);
+
 
         }
     };
@@ -55,26 +56,27 @@ function hamtaLagnamn(lagIdEtt, lagIdTva){
     var xhttp = new XMLHttpRequest();
 
     //Välj fil att ansluta till
-    xhttp.open("POST", "php/getTeamInfo.php", true);
+    xhttp.open("POST", "php/getDuoTeamInfo.php", true);
     //POST typ
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     //Skicka förfrågan med bunden variabel
-    xhttp.send("team-id=" + num + "&search-team=" + str.trim());
+    xhttp.send("team-one-id=" + lagIdEtt + "&team-two-id=" +lagIdTva);
 
     //Vänta på svar
     xhttp.onreadystatechange = function() {
         //Kontrollera att rätt typ av svar skickas
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
-            jsonData = this.responseText;
+            jsonLag = this.responseText;
             
             //Kolla ifall svaret innehåller error
-            if ( jsonData.includes('fel') ) {
+            if ( jsonLag.includes('fel') ) {
                 window.location.href = "php/error.php?error-msg=Fel vid hämtning av lagnamn!";
             }
 
             //Gör om svaret till JSON
-            jsonData = JSON.parse(jsonData);
+            jsonLag = JSON.parse(jsonLag);
+            console.log(jsonLag);
 
 
 
