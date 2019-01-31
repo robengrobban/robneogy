@@ -1,10 +1,5 @@
 <?php
-/*
- * Denna fils syfte är att hämta information om ett lag som en användare söker efter.
- * Ifall man inte söker på något ska alla lag hämtas.
- * Filen ska echo ut JSON text. Vilket betyder att en JS fil kommer använda
- * AJAX för att hämta datan och presentera den
-*/
+
 
 include 'include/clear-data.php';
 
