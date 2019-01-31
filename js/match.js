@@ -3,7 +3,7 @@
 */
 
 //variabel för match.js filen
-let jsonData;
+let jsonMatch;
 let jsonLag;
 
 //Funktion för att ladda match
@@ -25,33 +25,26 @@ function loadMatch(num){
         //Kontrollera att rätt typ av svar skickas
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
-            jsonData = this.responseText;
-            
+            jsonMatch = this.responseText;
+
             //Kolla ifall svaret innehåller error
-            if ( jsonData.includes('fel') ) {
+            if ( jsonMatch.includes('fel') ) {
                 window.location.href = "php/error.php?error-msg=Fel vid hämtning av match!";
             }
 
             //Gör om svaret till JSON
-            jsonData = JSON.parse(jsonData);
+            jsonMatch = JSON.parse(jsonMatch);
 
-            
-            //kolla jsonData
-            console.log(jsonData);
-
-            hamtaLagnamn(jsonData[0].teamIdOne,jsonData[0].teamIdTwo);
-
+			//Hämta lag information
+            loadTeam(jsonMatch[0].teamIdOne,jsonMatch[0].teamIdTwo);
 
         }
     };
-	
-	//hämta lagnamn.
-
 
 }
 
 
-function hamtaLagnamn(lagIdEtt, lagIdTva){
+function loadTeam(lagIdEtt, lagIdTva){
 	//Skapa ett anslutnings objekt
     var xhttp = new XMLHttpRequest();
 
@@ -68,7 +61,7 @@ function hamtaLagnamn(lagIdEtt, lagIdTva){
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
             jsonLag = this.responseText;
-            
+
             //Kolla ifall svaret innehåller error
             if ( jsonLag.includes('fel') ) {
                 window.location.href = "php/error.php?error-msg=Fel vid hämtning av lagnamn!";
@@ -76,15 +69,12 @@ function hamtaLagnamn(lagIdEtt, lagIdTva){
 
             //Gör om svaret till JSON
             jsonLag = JSON.parse(jsonLag);
-            console.log(jsonLag);
 
+			//Skriv ut informationen till skärmen
             showMatchInfo();
 
         }
     };
-
-
-
 
 }
 
@@ -92,29 +82,43 @@ function hamtaLagnamn(lagIdEtt, lagIdTva){
 function showMatchInfo(){
 
 	//hämtar lag 1 o 2
-	var teamOneName = getName(jsonLag, jsonData[0].teamIdOne);
-	var teamTwoName = getName(jsonLag, jsonData[0].teamIdTwo);
+	var teamOneName = getName(jsonLag, jsonMatch[0].teamIdOne);
+	var teamTwoName = getName(jsonLag, jsonMatch[0].teamIdTwo);
 
-	console.log(teamOneName+ " " +teamTwoName);
-
-
-
+	//Skirv ut informationen till skärmen
 	$("#match-container #team-one .team-name").text(teamOneName);
 	$("#match-container #team-two .team-name").text(teamTwoName);
 
-	$("#match-container #team-one .vote-container .votes").text(jsonData[0].votesTeamOne);
-	$("#match-container #team-two .vote-container .votes").text(jsonData[0].votesTeamTwo);
+	$("#match-container #team-one .vote-container .votes").text(jsonMatch[0].votesTeamOne);
+	$("#match-container #team-two .vote-container .votes").text(jsonMatch[0].votesTeamTwo);
 
-	var teamOneRoster = jsonData[0].votesTeamOne;
-	var teamTwoRoster = jsonData[0].votesTeamTwo;
+	//Räkna ut och skriv fram röster
+	var teamOneRoster = jsonMatch[0].votesTeamOne;
+	var teamTwoRoster = jsonMatch[0].votesTeamTwo;
+	console.log(teamOneRoster);
+	console.log(teamTwoRoster);
+
+	if (teamOneRoster > teamTwoRoster) {
+		teamOneRoster++;
+	} else if (teamOneRoster < teamTwoRoster) {
+		teamTwoRoster++;
+	}
 
 	var diff = teamOneRoster / teamTwoRoster;
+	console.log(diff);
+
 	var pro = diff*100;
+	console.log(pro);
+
 	if(diff == 1){
 		pro = 50;
 	}
 
 	$("#progress-value").css("width", pro+"%");
 
-}
+	//Ta bort röstknappar ifall matchen är klar
+	if ( jsonMatch[0].done == 1 ) {
+		$(".to-vote").remove();
+	}
 
+}

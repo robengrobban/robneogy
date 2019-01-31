@@ -112,6 +112,16 @@
 	padding: 1%;
 }
 
+.team-container div {
+	transition: 0.2s !important;
+}
+.team-container div:hover {
+	width: 95% !important;
+	margin-left: 2.5% !important;
+	margin-right: 2.5% !important;
+	box-shadow: 0 0 0.3rem 0.2rem rgba(0, 0, 0, 0.5) !important;
+}
+
 /*DESKTOP*/
 @media only screen and (min-width: 800px) {
 	#front-page-header {

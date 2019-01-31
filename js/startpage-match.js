@@ -15,7 +15,7 @@ function stopMatchLoad() {
 
 function loadMatch() {
 	//Skapa ett anslutnings objekt
-    var xhttp = new XMLHttpRequest();console.log("HELLO!");
+    var xhttp = new XMLHttpRequest();
 
     //Välj fil att ansluta till
     xhttp.open("POST", "php/getMatchInfo.php", true);
@@ -38,7 +38,6 @@ function loadMatch() {
 
             //Gör om svaret till JSON
             jsonMatch = JSON.parse(jsonMatch);
-            console.log(jsonMatch);
 
             //Ladda lagen
             loadTeam();
@@ -71,7 +70,6 @@ function loadTeam() {
 
             //Gör om svaret till JSON
             jsonTeam = JSON.parse(jsonTeam);
-            console.log(jsonTeam);
 
             //Visa matcher
             showMatch();
@@ -105,9 +103,4 @@ function showMatch() {
         dom.append('<div onclick="openMatch('+jsonMatch[i].id+')"><p><span class="team-one">'+teamOneName+'</span><span class="team-vs">VS</span><span class="team-two">'+teamTwoName+'</span></p></div>');
 
     }
-}
-
-function openMatch(num) {
-    //Skicka användaren till en annan sida
-    window.location = "match.php?id=" + num;
 }

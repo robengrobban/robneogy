@@ -40,13 +40,13 @@ if ( isLoggedIn() ) {
 
 		<?php
 		//Kolla så att knappen har klickats och att alla fällt är ifyllda
-		if ( isset($_POST['create']) && 
+		if ( isset($_POST['create']) &&
 			isset($_POST['firstname']) && clearData($_POST['firstname']) != "" &&
 			isset($_POST['lastname']) && clearData($_POST['lastname']) != "" &&
 			isset($_POST['username']) && clearData($_POST['username']) != "" &&
 			isset($_POST['email']) && clearData($_POST['email']) != "" &&
 			isset($_POST['password']) && clearData($_POST['password']) != "" &&
-			isset($_POST['password-rep']) && clearData($_POST['password-rep']) != "") 
+			isset($_POST['password-rep']) && clearData($_POST['password-rep']) != "")
 		{
 			//Spara datan och rensa den
 			$userFirstname = clearData($_POST['firstname']);
@@ -71,8 +71,8 @@ if ( isLoggedIn() ) {
 						//Kolla så att användarnamnet inte redan finns
 
 						//Anslut till databas
-						include 'php/include/connect-database.php'; 
-						
+						include 'php/include/connect-database.php';
+
 						//Förbered en fråga
 						$stmt = $conn->prepare('SELECT username FROM account WHERE username = ?');
 						$stmt->bind_param("s", $userName);
@@ -109,11 +109,10 @@ if ( isLoggedIn() ) {
 								$stmt->bind_param("sssss", $userName, $userEmail, $userFirstname, $userLastname, $userPassword);
 
 								//Hasha lösenordet
-								$userPassword = password_hash($userPassword, PASSWORD_DEFAULT);echo '<br>';
-								
+								$userPassword = password_hash($userPassword, PASSWORD_DEFAULT);
+
 								//Skapa konto
 								$stmt->execute();
-								
 
 								//Hämta ID för skapade kontot
 								$stmt = $conn->prepare("SELECT id FROM account WHERE username = ?");
@@ -128,7 +127,7 @@ if ( isLoggedIn() ) {
 								$_SESSION['user-email'] = $userEmail;
 								$_SESSION['user-firstname'] = $userFirstname;
 								$_SESSION['user-lastname'] = $userLastname;
-								
+
 								//Stäng anslutningar
 								$stmt->close();
 								$conn->close();

@@ -5,3 +5,7 @@ function getName(jsonData, teamNum) {
         }
     }
 }
+function openMatch(num) {
+    //Skicka användaren till match sida sida
+    window.location = "match.php?id=" + num;
+}
