@@ -47,6 +47,13 @@ if ( $res == 1 ) {
 unset($res);
 
 
+//Hämta det id för den som skapade sidan
+$stmt = $conn->prepare("SELECT accountId FROM game WHERE id = ?");
+$stmt->bind_param("i", $_GET['id']);
+$stmt->execute();
+$matchCreatorId = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['accountId'];
+
+
 //Kolla ifall användaren är inloggad
 include 'php/include/is-logged-in.php';
 $isLoggedIn = isLoggedIn();
@@ -191,6 +198,38 @@ $conn->close();
 					?>
 				</div>
 			</div>
+
+			<?php
+			//Skirv ut vinnar panel
+			if ( !$matchDone && $matchCreatorId == $_SESSION['user-id'] ) {
+				echo '<form id="choose-winner" method="POST">
+							<label>Avgör vinnare</label><input required name="confirm" type="checkbox">
+							<button type="submit" name="winner-team-one" id="team-one-name">L1</button>
+							<button type="submit" name="winner-team-two" id="team-two-name">L2</button>
+						</form>';
+			}
+			//Logiken för att avgöra vilket lag som vann
+			if (!$matchDone && $matchCreatorId == $_SESSION['user-id'] && isset($_POST['confirm']) && (isset($_POST['winner-team-one']) || isset($_POST['winner-team-two'])) ) {
+				$setWinner = "";
+				if ( isset($_POST['winner-team-one']) ) {
+					$setWinner = "teamIdOne";
+				} else if ( isset($_POST['winner-team-two']) ) {
+					$setWinner = "teamIdTwo";
+				}
+				//Skicka förfrågan om att uppdatera den som vann matchen
+				include 'php/include/connect-database.php';
+				$stmt = $conn->prepare("UPDATE game SET winnerId = ".$setWinner.", done = 1 WHERE id = ?");
+				$stmt->bind_param("i", $_GET['id']);
+				$stmt->execute();
+
+				//Stäng anslutningar
+				$stmt->close();
+				$conn->close();
+
+				//Skicka tillbaka användaren
+				header("Location: match.php?id=" . $_GET['id']);
+			}
+			?>
 
 		</div>
 

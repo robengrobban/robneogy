@@ -121,6 +121,18 @@
 	margin-right: 2.5% !important;
 	box-shadow: 0 0 0.3rem 0.2rem rgba(0, 0, 0, 0.5) !important;
 }
+#upcoming-matches .team-container div p {
+	transition: font-size 0.2s !important;
+}
+#upcoming-matches .team-container div p:hover {
+	font-size: 1.7rem !important;
+}
+#completed-matches .team-container div p {
+	transition: font-size 0.2s !important;
+}
+#completed-matches .team-container div p:hover {
+	font-size: 1.2rem !important;
+}
 
 /*DESKTOP*/
 @media only screen and (min-width: 800px) {

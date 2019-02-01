@@ -88,6 +88,8 @@ function showMatchInfo(){
 	//Skirv ut informationen till skärmen
 	$("#match-container #team-one .team-name").text(teamOneName);
 	$("#match-container #team-two .team-name").text(teamTwoName);
+	$("#match-container #choose-winner #team-one-name").text(teamOneName);
+	$("#match-container #choose-winner #team-two-name").text(teamTwoName);
 
 	$("#match-container #team-one .vote-container .votes").text(jsonMatch[0].votesTeamOne);
 	$("#match-container #team-two .vote-container .votes").text(jsonMatch[0].votesTeamTwo);
