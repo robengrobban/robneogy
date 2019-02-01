@@ -14,12 +14,12 @@ $stmt = $conn->prepare("SELECT count(id) FROM game WHERE id = ?");
 $stmt->bind_param("i", $matchId);
 $stmt->execute();
 $res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['count(id)'];
-
 //Kolla ifall antalet är 0, skicka i så fall iväg användaren
 if ($res == 0) {
 	header("Location: php/error.php?error-msg=Matchen med det ID:et finns inte!");
 }
 unset($res);
+
 
 $haveVoted = false;
 //Kolla ifall användaren har röstat
@@ -27,15 +27,30 @@ $stmt = $conn->prepare("SELECT * FROM votes WHERE accountId = ? AND gameId = ?")
 $stmt->bind_param("ii", $_SESSION['user-id'], $_GET['id']);
 $stmt->execute();
 $res = $stmt->get_result();
-
 //Kolla ifall ett svar fanns
 if ( $res && $res->num_rows > 0 ) {
 	$haveVoted = true;
 }
+unset($res);
+
+
+//Kolla ifall matchen är klar
+$matchDone = false;
+$stmt = $conn->prepare("SELECT done FROM game WHERE id = ?");
+$stmt->bind_param("i", $_GET['id']);
+$stmt->execute();
+$res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['done'];
+//Ifall klar, sätt variabel till true
+if ( $res == 1 ) {
+	$matchDone = true;
+}
+unset($res);
+
 
 //Kolla ifall användaren är inloggad
 include 'php/include/is-logged-in.php';
 $isLoggedIn = isLoggedIn();
+
 
 //Stäng anslutningar
 $stmt->close();
@@ -84,7 +99,7 @@ $conn->close();
 		</header>
 
 		<?php
-		if (!$haveVoted && $isLoggedIn) {
+		if (!$haveVoted && $isLoggedIn && !$matchDone) {
 
 			//Logiken för att rösta
 			$voterId = $_SESSION['user-id'];
@@ -132,10 +147,16 @@ $conn->close();
 				<div class="vote-container">
 					<p class="votes">0</p>
 					<?php
-					if (!$haveVoted && $isLoggedIn) {
+					if (!$haveVoted && $isLoggedIn && !$matchDone) {
 						echo '<form method="POST">
 								<button type="submit" name="röstLagEtt" class="to-vote">Rösta</button>
 						 	  </form>';
+					} else if ( $haveVoted ) {
+						echo '<button disabled title="Du har redan röstat!" class="to-vote need-login">Rösta</button>';
+					} else if ( $matchDone ) {
+						echo '<button disabled title="Matchen är klar. Du kan inte rösta!" class="to-vote need-login">Rösta</button>';
+					} else {
+						echo '<button disabled title="Du måste logga in för att rösta!" class="to-vote need-login">Rösta</button>';
 					}
 					?>
 				</div>
@@ -153,10 +174,16 @@ $conn->close();
 				<div class="vote-container">
 					<p class="votes">0</p>
 					<?php
-					if (!$haveVoted && $isLoggedIn) {
+					if (!$haveVoted && $isLoggedIn && !$matchDone) {
 						echo '<form method="POST">
 								<button type="submit" name="röstLagTvå" class="to-vote">Rösta</button>
 						 	  </form>';
+					} else if ( $haveVoted ) {
+						echo '<button disabled title="Du har redan röstat!" class="to-vote need-login">Rösta</button>';
+					} else if ( $matchDone ) {
+						echo '<button disabled title="Matchen är klar. Du kan inte rösta!" class="to-vote need-login">Rösta</button>';
+					} else {
+						echo '<button disabled title="Du måste logga in för att rösta!" class="to-vote need-login">Rösta</button>';
 					}
 					?>
 				</div>

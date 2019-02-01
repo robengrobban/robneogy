@@ -146,6 +146,15 @@ header h1 {
 	display: none;
 }
 
+
+.need-login {
+	cursor: not-allowed !important;
+	background-color: #324956 !important;
+}
+.need-login:hover {
+	background-color: #324956 !important;
+}
+
 /*DESKTOP*/
 @media only screen and (min-width: 800px) {
 

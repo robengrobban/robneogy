@@ -3,7 +3,7 @@
 */
 
 //Variabel för team.js filen
-let jsonData;
+let jsonTeam;
 
 //Funktion för att ladda lag
 //str String, lagnamnet som ska sökas
@@ -24,50 +24,47 @@ function loadTeam( str , num) {
         //Kontrollera att rätt typ av svar skickas
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
-            jsonData = this.responseText;
-            
+            jsonTeam = this.responseText;
+
             //Kolla ifall svaret innehåller error
-            if ( jsonData.includes('fel') ) {
+            if ( jsonTeam.includes('fel') ) {
                 window.location.href = "php/error.php?error-msg=Fel vid hämtning av lag!";
             }
 
             //Gör om svaret till JSON
-            jsonData = JSON.parse(jsonData);
+            jsonTeam = JSON.parse(jsonTeam);
 
             //Skirv ut svaret
-            printTeam(jsonData);
+            printTeam();
         }
     };
 }
 
 //Skriver ut lagen i listan
-//jsonData JSON, json som ska användas
-function printTeam( jsonData ) {
+function printTeam() {
     //Töm den befintliga listan
     $("form #search-container ul").empty();
-    
+
     //Gå igenom alla rader med JSON data
-    for ( var i = 0; i < jsonData.length; i++ ) {
+    for ( var i = 0; i < jsonTeam.length; i++ ) {
         //Hämta list hanteraren
         var dom = $("form #search-container ul").eq(0);
 
         //Hämta lag namn
-        var lagNamn = jsonData[i].name;
+        var lagNamn = jsonTeam[i].name;
 
         //Lägg till
-        dom.append("<li><a class='team-"+i+"' onclick='selectTeam(jsonData, "+i+", this)'>"+lagNamn+"</a></li>");
+        dom.append("<li><a class='team-"+i+"' onclick='selectTeam("+i+", this)'>"+lagNamn+"</a></li>");
     }
 }
 
 //Välj ett lag och skriv in lagnamnet i sök rutan
-//jsonData JSON, datan som ska användas
 //num int, index ID för JSON datan
 //dom DOM, elementet som klickades
-function selectTeam( jsonData, num, dom ) {
+function selectTeam( num, dom ) {
     //Hämta namnet för elementet som klickades
     var lagNamn = dom.innerHTML;
 
     //Ändra input rutans text till lagets namn
     $("form #search-container [name='search-team']")[0].value = lagNamn;
 }
-

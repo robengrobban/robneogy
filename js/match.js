@@ -95,30 +95,15 @@ function showMatchInfo(){
 	//Räkna ut och skriv fram röster
 	var teamOneRoster = jsonMatch[0].votesTeamOne;
 	var teamTwoRoster = jsonMatch[0].votesTeamTwo;
-	console.log(teamOneRoster);
-	console.log(teamTwoRoster);
 
-	if (teamOneRoster > teamTwoRoster) {
-		teamOneRoster++;
-	} else if (teamOneRoster < teamTwoRoster) {
-		teamTwoRoster++;
-	}
+	//Räkna ut totalen och differansen
+	var tot = teamOneRoster + teamTwoRoster;
+	var diff = teamOneRoster / tot;
 
-	var diff = teamOneRoster / teamTwoRoster;
-	console.log(diff);
-
+	//Räkna ut procenten av den differansen
 	var pro = diff*100;
-	console.log(pro);
 
-	if(diff == 1){
-		pro = 50;
-	}
-
+	//Ändra stilen på progress-value så man ser progressbaren
 	$("#progress-value").css("width", pro+"%");
-
-	//Ta bort röstknappar ifall matchen är klar
-	if ( jsonMatch[0].done == 1 ) {
-		$(".to-vote").remove();
-	}
 
 }
