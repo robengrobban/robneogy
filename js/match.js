@@ -111,13 +111,13 @@ function showMatchInfo(){
 
 		//Kolla ifall lag ett vann
 		if ( jsonMatch[0].teamIdOne == jsonMatch[0].winnerId ) {
-			$("#match-container #team-one").css("background-color", "green");
-			$("#match-container #team-two").css("background-color", "red");
+			$("#match-container #team-one .team-name").css("background-color", "green");
+			$("#match-container #team-two .team-name").css("background-color", "red");
 		}
 		//Annars vann andra laget
 		else {
-			$("#match-container #team-two").css("background-color", "green");
-			$("#match-container #team-one").css("background-color", "red");
+			$("#match-container #team-two .team-name").css("background-color", "green");
+			$("#match-container #team-one .team-name").css("background-color", "red");
 		}
 
 	}
