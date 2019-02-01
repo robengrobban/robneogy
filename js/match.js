@@ -106,4 +106,20 @@ function showMatchInfo(){
 	//Ändra stilen på progress-value så man ser progressbaren
 	$("#progress-value").css("width", pro+"%");
 
+	//Ändra stil ifall ett lag van
+	if ( jsonMatch[0].done == 1 ) {
+
+		//Kolla ifall lag ett vann
+		if ( jsonMatch[0].teamIdOne == jsonMatch[0].winnerId ) {
+			$("#match-container #team-one").css("background-color", "green");
+			$("#match-container #team-two").css("background-color", "red");
+		}
+		//Annars vann andra laget
+		else {
+			$("#match-container #team-two").css("background-color", "green");
+			$("#match-container #team-one").css("background-color", "red");
+		}
+
+	}
+
 }

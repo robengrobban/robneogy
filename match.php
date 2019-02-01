@@ -78,15 +78,18 @@ $conn->close();
 		<!-- Funktion JS LÄNK-->
 		<script type="text/javascript" src="js/funktioner.js"></script>
 
-		<!--JS LÄNK-->
+		<!--JS MATCHER LÄNK-->
 		<script type="text/javascript" src="js/match.js"></script>
+
+		<!--JS KOMMENTARER LÄNK-->
+		<script type="text/javascript" src="js/comment.js"></script>
 
 	</head>
 	<body
-		<?php
-		echo "onload=loadMatch(".$_GET['id'].")";
-		?>
-	>
+			<?php
+			echo "onload='loadMatch(".$_GET['id']."), loadComments(".$_GET['id']."), startCommentLoad()'";
+			?>
+		>
 		<!--TILLBAKA-->
 		<nav id="back-nav">
 			<ul>
@@ -191,21 +194,66 @@ $conn->close();
 
 		</div>
 
+		<?php
+
+		if ( $isLoggedIn && isset($_POST['the-comment']) && clearData($_POST['the-comment']) != "" ) {
+
+			//Hämta kommentaren
+			$kommentar = clearData($_POST['the-comment']);
+
+			//Möter kommentaren kravet för storlek?
+			if (strlen($kommentar)>256) {
+				echo '<div id="error-msg">
+						<p>Kommentaren överskrider maximala antalet tecken!</p>
+					</div>';
+			} else {
+				//Anslut
+				include 'php/include/connect-database.php';
+
+				$stmt = $conn->prepare("INSERT INTO comments (accountId, gameId, content) VALUES (?,?,?)");
+				$stmt->bind_param("iis", $_SESSION['user-id'], $_GET['id'], $kommentar);
+				$stmt->execute();
+
+				//Ladda om sidan
+				header("Location: match.php?id=" . $_GET['id']);
+
+				//Stäng anslutningar
+				$stmt->close();
+				$conn->close();
+			}
+
+		} else if (isset($_POST['the-comment'])) {
+			echo '<div id="error-msg">
+					<p>Kommentar saknas!</p>
+				</div>';
+		}
+
+		?>
+
 		<div id="comment-container">
 
-			<section class="comment">
-				<p>
-					Jag har en fin kommentar som jag vil dela med mig!
-				</p>
-				<span>
-					Herbert
-				</span>
-			</section>
+			<div id="the-comments">
+				<!--<section class="comment">
+					<p>
+						Jag har en fin kommentar som jag vil dela med mig!
+					</p>
+					<span>
+						Herbert
+					</span>
+				</section>-->
+			</div>
 
 			<form id="to-comment" method="POST">
 				<label>Kommentar:</label>
 				<textarea required form="to-comment" name="the-comment" maxlength="256"></textarea>
-				<button type="submit" name="skicka">Kommentera</button>
+				<?php
+				if ( !$isLoggedIn ) {
+					echo '<button disabled title="Måste logga in för att kommentera!" class="need-login" type="submit" name="skicka">Kommentera</button>';
+				} else {
+					echo '<button type="submit" name="skicka">Kommentera</button>';
+				}
+				?>
+
 			</form>
 
 		</div>
