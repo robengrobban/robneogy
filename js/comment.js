@@ -48,7 +48,7 @@ function displayComments() {
 	}
 }
 
-let laddningsTidSekunder = 120;
+let laddningsTidSekunder = 30;
 function startCommentLoad() {
 	laddning = setInterval(loadComments, (laddningsTidSekunder * 1000));
 }
