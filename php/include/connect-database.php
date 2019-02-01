@@ -1,6 +1,6 @@
 <?php
 //Skapa anslutnings variabler
-$serverip = "213.112.218.202";
+$serverip = "213.114.234.40";
 
 $username = "robneogy";
 
