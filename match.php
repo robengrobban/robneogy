@@ -284,7 +284,7 @@ $conn->close();
 
 			<form id="to-comment" method="POST">
 				<label>Kommentar:</label>
-				<textarea required form="to-comment" name="the-comment" maxlength="256"></textarea>
+				<textarea required placeholder="En kommentar..." form="to-comment" name="the-comment" maxlength="256"></textarea>
 				<?php
 				if ( !$isLoggedIn ) {
 					echo '<button disabled title="Måste logga in för att kommentera!" class="need-login" type="submit" name="skicka">Kommentera</button>';

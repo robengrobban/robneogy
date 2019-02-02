@@ -121,9 +121,9 @@ header h1 {
 	display: block;
 	width: 100%;
 	min-height: 10rem;
-	padding: 2%;
-	font-size: 1.3rem;
-	box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+	padding: 1%;
+	font-size: 1rem;
+	/*box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.5);*/
 }
 #comment-container #to-comment button {
 	display: block;
@@ -131,16 +131,16 @@ header h1 {
 	width: 100%;
 	padding: 2%;
 	cursor: pointer;
-	box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+	/*box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.5);*/
 	border: 0;
-	border-radius: 0.2rem;
+	/*border-radius: 0.2rem;*/
 	color:#FFF;
-	background-color:#5498BF;
+	background-color: #427896;
 	transition: background-color 0.2s;
 	font-size: 1.5rem;
 }
 #comment-container #to-comment button:hover {
-	background-color: #427896;
+	background-color: #325c73;
 }
 #match-container #progress-container h2 {
 	display: none;

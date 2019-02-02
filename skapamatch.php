@@ -8,9 +8,8 @@ include 'php/include/is-logged-in.php';
 if ( !isLoggedIn() ) {
 	header("Location: loggain.php");
 }
-
 //Kolla ifall man inte har ett lag
-if ( !isset($_SESSION['user-teamId']) ) {
+else if ( !isset($_SESSION['user-teamId']) ) {
 	header("Location: php/error.php?error-msg=Du har inget lag!");
 }
 
@@ -131,7 +130,7 @@ if ( !isset($_SESSION['user-teamId']) ) {
 						echo $_SESSION['user-teamId'];
 					?>)">
 				<ul>
-					
+
 				</ul>
 			</div>
 			<button type="submit" name="create-match">Skapa match</button>
@@ -141,6 +140,6 @@ if ( !isset($_SESSION['user-teamId']) ) {
 		<?php
 		include 'footer-html.php';
 		?>
-		
+
 	</body>
 </html>

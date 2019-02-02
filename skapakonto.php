@@ -34,10 +34,6 @@ if ( isLoggedIn() ) {
 			</ul>
 		</nav>
 
-		<header>
-			<h1>Skapa konto</h1>
-		</header>
-
 		<?php
 		//Kolla så att knappen har klickats och att alla fällt är ifyllda
 		if ( isset($_POST['create']) &&
@@ -171,11 +167,13 @@ if ( isLoggedIn() ) {
 		}
 
 		?>
-
-
-
+		
 		<!--FROM FÖR INLOGG-->
 		<form method="POST">
+
+			<header>
+				<h1>Skapa konto</h1>
+			</header>
 
 			<div id=firstname-container>
 				<label for="firstname">Förnamn:</label>

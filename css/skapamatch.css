@@ -1,12 +1,12 @@
 /*MOBIL*/
 header h1 {
 	text-align: center;
-	padding-top: 4%;
+	padding-top: 7%;
 }
 form {
 	width: 100%;
 	margin: 5% 0%;
-	background: #EAEAEA;
+	background: #ededed;
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 }
 form label {
@@ -24,6 +24,14 @@ form input {
 	border-radius: 0.25rem;
 	border: 0;
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+form input:focus {
+	-webkit-transition: box-shadow 0.2s;
+	-moz-transition: box-shadow 0.2s;
+	-ms-transition: box-shadow 0.2s;
+	-o-transition: box-shadow 0.2s;
+	transition: box-shadow 0.2s;
+	box-shadow: 0 0 0.2rem 0.1rem #5498BF;
 }
 form ul {
 	margin: 1%;
@@ -51,8 +59,8 @@ form ul li a:hover {
 }
 
 form button {
-	width: 30%;
-	margin: 5% 35%;
+	width: 40%;
+	margin: 5% 30%;
 	text-align: center;
 	cursor: pointer;
 	padding: 3%;

@@ -38,10 +38,6 @@ if ( isset($_SESSION['user-teamId']) ) {
 					<li><a href="index.php">Hem</a></li>
 				</ul>
 			</nav>
-		
-		<header>
-			<h1>Skapa lag</h1>
-		</header>
 
 		<?php
 		//Kolla så att man klickat på skapa lag
@@ -93,8 +89,8 @@ if ( isset($_SESSION['user-teamId']) ) {
 
 					//Visa ruta att lag skapats
 					header("Location: php/success.php?success-msg=Laget med namnet ".$userTeamName." har skapats!");
-											
-				}	
+
+				}
 
 				//Stäng anslutningar
 				$stmt->close();
@@ -106,7 +102,7 @@ if ( isset($_SESSION['user-teamId']) ) {
 					</div>';
 			}
 		}
-		//Ifall man klickar på knappen utan att fylla i något 
+		//Ifall man klickar på knappen utan att fylla i något
 		else if ( isset($_POST['create']) ) {
 			echo '<div id="error-msg">
 					<p>Alla fält måste fyllas i!</p>
@@ -117,6 +113,9 @@ if ( isset($_SESSION['user-teamId']) ) {
 		<?php
 		if ( !isset($_SESSION['user-teamId']) ) {
 			echo '<form method="POST">
+				<header>
+					<h1>Skapa lag</h1>
+				</header>
 				<div id="team-container">
 					<label>Lagnamn:</label>
 					<input required type="text" name="team-name">
@@ -130,6 +129,6 @@ if ( isset($_SESSION['user-teamId']) ) {
 		<?php
 		include 'footer-html.php';
 		?>
-		
+
 	</body>
 </html>

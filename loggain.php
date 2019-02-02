@@ -34,13 +34,9 @@ if ( isLoggedIn() ) {
 			</ul>
 		</nav>
 
-		<header>
-			<h1>Logga in</h1>
-		</header>
-
 		<?php
 		//Kolla så att knappen har klickats och att alla fällt är ifyllda
-		if ( isset($_POST['login']) && 
+		if ( isset($_POST['login']) &&
 			isset($_POST['username']) && clearData($_POST['username']) != "" &&
 			isset($_POST['password']) && clearData($_POST['password']) != "" )
 		{
@@ -49,7 +45,7 @@ if ( isLoggedIn() ) {
 			$userName = clearData($_POST['username']);
 			$userPassword = clearData($_POST['password']);
 
-			
+
 
 			include "php/include/connect-database.php";
 
@@ -84,7 +80,7 @@ if ( isLoggedIn() ) {
 				else{
 				echo '<div id="error-msg">
 					<p>Fel användarnamn eller lösenord</p>
-				</div>';	
+				</div>';
 				}
 			}
 			$stmt->close();
@@ -110,6 +106,10 @@ if ( isLoggedIn() ) {
 
 		<!--FORM FÖR INLOGG-->
 		<form method="POST">
+
+			<header>
+				<h1>Logga in</h1>
+			</header>
 
 			<div id="username-container">
 				<label>Användarnamn eller email:</label>
