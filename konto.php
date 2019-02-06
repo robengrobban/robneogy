@@ -63,9 +63,16 @@ if ( !isLoggedIn() ) {
 		}
 		?>
 
-		<form method="POST">
+		<form method="POST" id="user-image-container">
+			<div id="user-image">
+				<div id="upload-new"><button type="submit" name="upload-image">Ladda upp ny bild</button></div>
+			</div>
+		</form>
+
+		<form method="POST" id="user-info">
+
 			<header>
-				<h1>Mitt konto: <?php echo $_SESSION['user-name'] ?></h1>
+				<h1><?php echo $_SESSION['user-name'] ?></h1>
 			</header>
 
 			<div class="form-container">

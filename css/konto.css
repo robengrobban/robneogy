@@ -3,20 +3,20 @@ header h1 {
 	text-align: center;
 	padding-top: 4%;
 }
-form {
-	width: 100%;
-	margin: 5% 0%;
+#user-info {
+	width: 90%;
+	margin: 5% 5%;
 	background: #EAEAEA;
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 }
-form label{
+#user-info label{
 	font-size: 1.2rem;
 	text-align: left;
 	width: 100%;
 	display: block;
 	padding-bottom: 2%;
 }
-form input{
+#user-info input{
 	display: block;
 	width: 100%;
 	font-size: 1.1rem;
@@ -25,9 +25,9 @@ form input{
 	border: 0;
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 }
-form button {
-	width: 30%;
-	margin: 5% 35%;
+#user-info button {
+	width: 81%;
+	margin: 3% 9.5%;
 	text-align: center;
 	cursor: pointer;
 	padding: 3%;
@@ -38,7 +38,7 @@ form button {
 	border-radius: 0.3rem;
 	transition: background-color 0.2s;
 }
-form button:hover {
+#user-info button:hover {
 	background-color: #427896;
 }
 .form-container {
@@ -47,11 +47,60 @@ form button:hover {
 	margin: 0% 5%;
 	overflow: hidden;
 }
+#user-image-container {
+	width: 90%;
+	position: relative;
+	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+#user-image {
+	width: 100%;
+	padding-top: 100%;
+	background-image: url("../img/placeholder.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition: filter 0.2s;
+	position: relative;
+}
+#upload-new {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: opacity 0.2s;
+}
+#upload-new button {
+	position: absolute;
+	font-size: 2rem;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+#user-image:hover {
+	cursor: pointer;
+}
+#upload-new:hover {
+	opacity: 1;
+}
 
 /*DEKSTOP*/
 @media only screen and (min-width: 800px){
-	form {
-		width: 70%;
-		margin: 5% 15%;
+	#user-info {
+		width: 45%;
+		margin: 2.5%;
+		float: left;
+	}
+	#user-image-container {
+		width: 45%;
+		margin: 2.5%;
+		float: left;
 	}
 }
