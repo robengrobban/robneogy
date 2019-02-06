@@ -1,0 +1,30 @@
+#upload-image-container {
+	width: 95%;
+	margin: 3% 2.5% 3% 2.5%;
+	background: #EAEAEA;
+	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+}
+#upload-image-container input {
+	display: block;
+	width: 50%;
+	font-size: 1rem;
+	padding: 3%;
+	border: 0;
+	float: left;
+}
+#upload-image-container button {
+	width: 50%;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+	padding: 3%;
+	font-size: 1.1rem;
+	background-color: #5498BF;
+	color: white;
+	border: 0;
+	transition: background-color 0.2s;
+}
+#upload-image-container button:hover {
+	background-color: #427896;
+}
