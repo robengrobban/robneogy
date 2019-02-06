@@ -9,6 +9,13 @@ if ( !isLoggedIn() ) {
 	header("Location: index.php");
 }
 
+//Hämta användarens profil bild
+include 'php/include/connect-database.php';
+$stmt = $conn->prepare("SELECT imageURL FROM account WHERE id = ?");
+$stmt->bind_param("i", $_SESSION['user-id']);
+$stmt->execute();
+$imageURL = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['imageURL'];
+
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -63,35 +70,37 @@ if ( !isLoggedIn() ) {
 		}
 		?>
 
-		<form method="POST" id="user-image-container">
-			<div id="user-image">
-				<div id="upload-new"><button type="submit" name="upload-image">Ladda upp ny bild</button></div>
-			</div>
-		</form>
-
-		<form method="POST" id="user-info">
-
-			<header>
-				<h1><?php echo $_SESSION['user-name'] ?></h1>
-			</header>
-
-			<div class="form-container">
-				<label>Förnamn:</label>
-				<input required name="firstname" type="text" value="<?php echo $_SESSION['user-firstname'] ?>">
+		<div id="user-form-container">
+			<div id="user-image-container">
+				<div id="user-image" <?php if (isset($imageURL)) { echo "style='background-image: url(uploads/".$imageURL.");'"; } ?>>
+					<div id="upload-new"><button onclick="window.location = 'uploads/upload.php';" type="submit" name="upload-image">Ladda upp ny bild</button></div>
+				</div>
 			</div>
 
-			<div class="form-container">
-				<label>Efternamn:</label>
-				<input required name="lastname" type="text" value="<?php echo $_SESSION['user-lastname'] ?>">
-			</div>
+			<form method="POST" id="user-info">
 
-			<div class="form-container">
-				<label>Email:</label>
-				<input disabled="disabled" readonly="readonly" name="email" type="email" value="<?php echo $_SESSION['user-email'] ?>">
-			</div>
+				<header>
+					<h1><?php echo $_SESSION['user-name'] ?></h1>
+				</header>
 
-			<button name='change' type="submit">Uppdatera information</button>
-		</form>
+				<div class="form-container">
+					<label>Förnamn:</label>
+					<input required name="firstname" type="text" value="<?php echo $_SESSION['user-firstname'] ?>">
+				</div>
+
+				<div class="form-container">
+					<label>Efternamn:</label>
+					<input required name="lastname" type="text" value="<?php echo $_SESSION['user-lastname'] ?>">
+				</div>
+
+				<div class="form-container">
+					<label>Email:</label>
+					<input disabled="disabled" readonly="readonly" name="email" type="email" value="<?php echo $_SESSION['user-email'] ?>">
+				</div>
+
+				<button name='change' type="submit">Uppdatera information</button>
+			</form>
+		</div>
 
 	</body>
 </html>

@@ -3,6 +3,11 @@ header h1 {
 	text-align: center;
 	padding-top: 4%;
 }
+#user-form-container {
+	overflow: hidden;
+	display: block;
+	position: relative;
+}
 #user-info {
 	width: 90%;
 	margin: 5% 5%;
@@ -49,6 +54,7 @@ header h1 {
 }
 #user-image-container {
 	width: 90%;
+	margin: 0 5%;
 	position: relative;
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 }
@@ -59,7 +65,6 @@ header h1 {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	transition: filter 0.2s;
 	position: relative;
 }
 #upload-new {
@@ -80,7 +85,7 @@ header h1 {
 	left: 50%;
 	width: 100%;
 	height: 100%;
-	background-color: transparent;
+	background-color: rgba(0, 0, 0, 0.5);
 	border: none;
 	cursor: pointer;
 }
@@ -94,13 +99,17 @@ header h1 {
 /*DEKSTOP*/
 @media only screen and (min-width: 800px){
 	#user-info {
-		width: 45%;
-		margin: 2.5%;
+		width: 47.5%;
+		margin: 2.5% 1.25% 2.5% 1.25%;
 		float: left;
 	}
 	#user-image-container {
-		width: 45%;
-		margin: 2.5%;
+		width: 47.5%;
+		margin: 2.5% 1.25% 2.5% 1.25%;
 		float: left;
+	}
+	#upload-image-container {
+		width: 97.5%;
+		margin: 1.25%;
 	}
 }
