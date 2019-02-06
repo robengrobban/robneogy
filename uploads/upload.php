@@ -57,7 +57,7 @@ if ( !isLoggedIn() ) {
 			}
 			if ( !$correctFileType ) {
 				echo '<div id="error-msg">
-						<p>Filen du förstöke ladda upp är inte stödd. Dessa filer stöds: '.$supportetFileTypesText.'.</p>
+						<p>Filen du förstöke ladda upp är inte stödd. Dessa filer stöds: '.$supportetFileTypesText.'</p>
 					</div>';
 			} else {
 
