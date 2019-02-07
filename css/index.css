@@ -8,7 +8,7 @@
 	background-size: cover;
 	background-attachment: fixed;
 	position: relative;
-	/*box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);borttagen tillsvidare*/
+	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 	z-index: 5;
 }
 #front-page-header h1 {
@@ -55,8 +55,9 @@
 	position: relative;
 	background-color: #60AFDB;
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
-	border-radius: 0.3rem;
+	border-radius: 0.15rem;
 	cursor: pointer;
+
 }
 #upcoming-matches .team-container div p {
 	font-size: 2rem;
@@ -92,9 +93,9 @@
 	margin: 4%;
 	overflow: hidden;
 	position: relative;
-	background-color: #5498BF;
+	background-color: orange;
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
-	border-radius: 0.3rem;
+	border-radius: 0.15rem;
 	cursor: pointer;
 }
 #completed-matches .team-container div p {
@@ -124,37 +125,39 @@
 #upcoming-matches .team-container div p {
 	transition: font-size 0.2s !important;
 }
-#upcoming-matches .team-container div p:hover {
-	font-size: 1.7rem !important;
-}
 #completed-matches .team-container div p {
 	transition: font-size 0.2s !important;
 }
-#completed-matches .team-container div p:hover {
-	font-size: 1.2rem !important;
-}
+
 
 /*DESKTOP*/
 @media only screen and (min-width: 800px) {
 	#front-page-header {
 		height: 75vh;
-		/*z-index: 11;borttagen tillsvidare*/
+		z-index: 11;
 	}
 
 	#upcoming-matches {
-		width: 70%;
+		width: 65%;
 	}
 	#upcoming-matches .team-container div p {
 		font-size: 1.6rem;
 	}
 
 	#completed-matches {
-		width: 30%;
+		width: 35%;
 	}
 	#completed-matches .team-container div {
 		margin: 6% 4%;
 	}
 	#completed-matches .team-container div p {
-		font-size: 1.1rem;
+		font-size: 0.9rem;
 	}
+	#upcoming-matches .team-container div p:hover {
+	font-size: 1.7rem !important;
+}
+	#completed-matches .team-container div p:hover {
+	font-size: 0.94rem !important;
+	}
+
 }
