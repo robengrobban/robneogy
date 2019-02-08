@@ -81,6 +81,7 @@
 /*DESKTOP*/
 @media only screen and (min-width: 800px) {
 	#main-nav {
+		position: static;
 		position: -webkit-sticky;
 		position: sticky;
 	}
