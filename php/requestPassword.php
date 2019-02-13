@@ -86,7 +86,7 @@ if ( isLoggedIn() ) {
 					$headers .= "Content-type: text/html\r\n";
 
 					// send email
-					$res = mail("robert.englund@edu.nacka.se","My subject",$msg, $headers);
+					$res = mail($mail,"Återställ ditt lösenord!",$msg, $headers);
 					if ($res) {
 						header("Location: success.php?success-msg=Ett mail har skickats till " . $mail . " med instruktioner om hur du kan återställa ditt lösenord.");
 					}
