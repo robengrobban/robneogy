@@ -30,7 +30,7 @@ if ( isLoggedIn() ) {
 		<!--TILLBAKA-->
 		<nav id="back-nav">
 			<ul>
-				<li><a href="index.php">Hem</a></li>
+				<li><a href="../index.php">Hem</a></li>
 			</ul>
 		</nav>
 
