@@ -97,7 +97,7 @@ if ( isLoggedIn() ) {
 							if ( $res && $res->num_rows > 0 ) {
 								//Finns ett konto! Avbryt
 								echo '<div id="error-msg">
-										<p>Email addressen är redan upptaget!</p>
+										<p>Email addressen är redan upptagen!</p>
 									</div>';
 							} else {
 								//Skapa konto
