@@ -62,7 +62,7 @@ else{
 		<!--STIL MED CSS-->
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../css/nav.css">
-		<link rel="stylesheet" type="text/css" href="../css/skapaKonto.css">
+		<link rel="stylesheet" type="text/css" href="../css/skapakonto.css">
 
 		
 </head>
@@ -76,13 +76,13 @@ else{
 <?php  
 #pungsäck
 if (isset($_POST['reset'])&& isset($_POST['password']) &&isset($_POST['password-rep'])) {
-	$password = clearData($_POST['password']);
-	$passwordRep = clearData($_POST['password-rep']);
+	$userPassword = clearData($_POST['password']);
+	$userPasswordRep = clearData($_POST['password-rep']);
 
 	
-	if ( preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,100}$/', $password) ) {
+	if ( preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,100}$/', $userPassword) ) {
 
-		if ($password != $passwordRep) {
+		if ($userPassword != $userPasswordRep) {
 		echo '<div id="error-msg">
 			<p>Lösenorden matchar ej!</p>
 		  </div>';
@@ -91,20 +91,22 @@ if (isset($_POST['reset'])&& isset($_POST['password']) &&isset($_POST['password-
 			include "include/connect-database.php";
 
 			$stmt = $conn->prepare("UPDATE account SET password = ? WHERE username = ? AND mail = ?");
-			$stmt->bind_param("sss", $password, $name, $email);
+			$stmt->bind_param("sss", $userPassword, $name, $email);
 
 			//Hasha lösenordet
-			$password = password_hash($password, PASSWORD_DEFAULT);
+			$userPassword = password_hash($userPassword, PASSWORD_DEFAULT);
 
 			$stmt->execute();
+			$stmt->close();
 
 			$stmt = $conn->prepare("UPDATE account SET veriKey = NULL WHERE username = ? AND mail = ?");
 			$stmt->bind_param("ss", $name, $email);
 
 			$stmt->execute();
 
-			$conn->close();
 			$stmt->close();
+			$conn->close();
+			
 
 			header("Location:success.php?success-msg=Lösenord ändrat!");
 		}
