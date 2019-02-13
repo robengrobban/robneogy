@@ -116,6 +116,11 @@ if ( isLoggedIn() ) {
 				<input required type="text" name="username" placeholder="Skriv användarnamn eller email">
 			</div>
 
+			<div id="password-container">
+				<label for="password">Lösenord:</label>
+				<input required type="password" name="password" placeholder="Skriv lösenord">
+			</div>
+
 			<span><a href="php/requestPassword.php">Glömt lösenord? Återställ det!</a></span>
 
 			<button type="submit" name="login">Logga in</button>
