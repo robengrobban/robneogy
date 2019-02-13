@@ -76,8 +76,48 @@ else{
 <?php  
 #pungsäck
 if (isset($_POST['reset'])&& isset($_POST['password']) &&isset($_POST['password-rep'])) {
+	$password = clearData($_POST['password']);
+	$passwordRep = clearData($_POST['password-rep']);
+
+	
+	if ( preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,100}$/', $password) ) {
+
+		if ($password != $passwordRep) {
+		echo '<div id="error-msg">
+			<p>Lösenorden matchar ej!</p>
+		  </div>';
+	}
+	else{
+		//Hasha lösenordet
+		$password = password_hash($password, PASSWORD_DEFAULT);
+		include "include/connect-database.php";
+
+		$stmt = $conn->prepare("UPDATE account SET password = ? WHERE username = ? AND mail = ?");
+		$stmt->bind_param("sss", $password, $name, $email);
+
+		$stmt->execute();
+
+		$conn->close();
+		$stmt->close();
+
+		header("Location:success.php?success-msg=Lösenord ändrat!");
+	}
+	}
+	else{
+		echo '<div id="error-msg">
+			<p>Lösenorden måste vara 8 tecken långt, inte fler än 100. Måste innehålla bokstäver och siffror!</p>
+		  </div>';	
+		}
+
+
 	
 }
+else if(isset($_POST['reset'])){
+	echo '<div id="error-msg">
+			<p>Inget lösenord angivet!</p>
+		  </div>';
+}
+
 
 ?>
 		<!--FROM FÖR INLOGG-->
