@@ -70,7 +70,7 @@ else{
 		<!--TILLBAKA-->
 		<nav id="back-nav">
 			<ul>
-				<li><a href="index.php">Hem</a></li>
+				<li><a href="../index.php">Hem</a></li>
 			</ul>
 		</nav>
 <?php  
@@ -86,22 +86,28 @@ if (isset($_POST['reset'])&& isset($_POST['password']) &&isset($_POST['password-
 		echo '<div id="error-msg">
 			<p>Lösenorden matchar ej!</p>
 		  </div>';
-	}
-	else{
-		//Hasha lösenordet
-		$password = password_hash($password, PASSWORD_DEFAULT);
-		include "include/connect-database.php";
+		} else{
+			
+			include "include/connect-database.php";
 
-		$stmt = $conn->prepare("UPDATE account SET password = ? WHERE username = ? AND mail = ?");
-		$stmt->bind_param("sss", $password, $name, $email);
+			$stmt = $conn->prepare("UPDATE account SET password = ? WHERE username = ? AND mail = ?");
+			$stmt->bind_param("sss", $password, $name, $email);
 
-		$stmt->execute();
+			//Hasha lösenordet
+			$password = password_hash($password, PASSWORD_DEFAULT);
 
-		$conn->close();
-		$stmt->close();
+			$stmt->execute();
 
-		header("Location:success.php?success-msg=Lösenord ändrat!");
-	}
+			$stmt = $conn->prepare("UPDATE account SET veriKey = NULL WHERE username = ? AND mail = ?");
+			$stmt->bind_param("ss", $name, $email);
+
+			$stmt->execute();
+
+			$conn->close();
+			$stmt->close();
+
+			header("Location:success.php?success-msg=Lösenord ändrat!");
+		}
 	}
 	else{
 		echo '<div id="error-msg">
