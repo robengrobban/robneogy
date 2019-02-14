@@ -30,8 +30,12 @@
 }
 
 #container-matches {
-	overflow: hidden;
-	background-color: #ededed;
+	overflow: auto;
+	background-color: white !important;
+	z-index: 5 !important;	
+	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5) !important;
+	display: block !important;
+	position: relative !important;
 }
 
 #upcoming-matches {
