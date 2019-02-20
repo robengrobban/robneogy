@@ -43,7 +43,7 @@ function displayComments() {
 		var comment = jsonComment[i].content;
 		var commenter = jsonComment[i].username;
 
-		dom.append("<section class='comment'><p>"+comment+"</p><span>"+commenter+"</span></section>");
+		dom.append("<section class='comment'><p>"+comment+"</p><span><a href='../kollaKonto.php?user="+commenter +"'>"+commenter+"</a></span></section>");
 
 	}
 }
