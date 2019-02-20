@@ -113,6 +113,7 @@ if ( isset($_GET['logout']) ) {
 			</div>
 		</div>
 
+
 		<?php
 		include 'footer-html.php';
 		?>
