@@ -94,7 +94,7 @@ $conn->close();
 	</head>
 	<body
 			<?php
-			echo "onload='loadMatch(".$_GET['id']."), loadComments(".$_GET['id']."), startCommentLoad()'";
+			echo "onload='loadMatch(".$_GET['id']."), loadComments(".$_GET['id']."), startCommentLoad(".$_GET['id'].")'";
 			?>
 		>
 		<!--TILLBAKA-->
