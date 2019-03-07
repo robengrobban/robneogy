@@ -20,7 +20,7 @@ function loadComments(num) {
 
             //Kolla ifall svaret innehåller error
             if ( jsonComment.includes('fel') ) {
-                window.location.href = "php/error.php?error-msg=Fel vid hämtning av match!";
+                window.location.href = "php/error.php?error-msg=Fel vid hämtning av kommentar!";
             }
 
             //Gör om svaret till JSON
