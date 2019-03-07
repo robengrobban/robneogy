@@ -9,7 +9,7 @@ function loadComments(num) {
 	//post, typ
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     //Skicka förfrågan med bunden variabel
-    xhttp.send("gameId=" +num);
+    xhttp.send("gameId="+num);
 
     //vänta på svar
     xhttp.onreadystatechange = function() {
@@ -17,11 +17,6 @@ function loadComments(num) {
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
             jsonComment = this.responseText;
-
-            //Kolla ifall svaret innehåller error
-            if ( jsonComment.includes('fel') ) {
-                window.location.href = "php/error.php?error-msg=Fel vid hämtning av kommentar!";
-            }
 
             //Gör om svaret till JSON
             jsonComment = JSON.parse(jsonComment);

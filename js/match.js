@@ -27,11 +27,6 @@ function loadMatch(num){
             //Hämta response texten
             jsonMatch = this.responseText;
 
-            //Kolla ifall svaret innehåller error
-            if ( jsonMatch.includes('fel') ) {
-                window.location.href = "php/error.php?error-msg=Fel vid hämtning av match!";
-            }
-
             //Gör om svaret till JSON
             jsonMatch = JSON.parse(jsonMatch);
 
@@ -61,11 +56,6 @@ function loadTeam(lagIdEtt, lagIdTva){
         if ( this.readyState == 4 && this.status == 200 ) {
             //Hämta response texten
             jsonLag = this.responseText;
-
-            //Kolla ifall svaret innehåller error
-            if ( jsonLag.includes('fel') ) {
-                window.location.href = "php/error.php?error-msg=Fel vid hämtning av lagnamn!";
-            }
 
             //Gör om svaret till JSON
             jsonLag = JSON.parse(jsonLag);

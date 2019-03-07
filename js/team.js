@@ -26,11 +26,6 @@ function loadTeam( str , num) {
             //Hämta response texten
             jsonTeam = this.responseText;
 
-            //Kolla ifall svaret innehåller error
-            if ( jsonTeam.includes('fel') ) {
-                window.location.href = "php/error.php?error-msg=Fel vid hämtning av lag!";
-            }
-
             //Gör om svaret till JSON
             jsonTeam = JSON.parse(jsonTeam);
 
