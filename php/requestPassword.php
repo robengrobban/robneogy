@@ -72,13 +72,13 @@ if ( isLoggedIn() ) {
 
 					//Skicka mailet
 					// the message
-					$url = "http://213.114.238.123/gymnasiearbete/robneogy/php/resetPassword.php";
+					$url = "http://".$serverip."/gymnasiearbete/robneogy/php/resetPassword.php";
 					$link = $url . "?userEmail=" . $mail . "&userName=" . $userName . "&veriKey=" . $veriKey;
 					$msg = "
 					<html>
 					  <body>
 					  	<p>ÅTERSTÄLL NU!</p>
-					  	<a href=\"".$link."\">Min länk</a>
+					  	<a href=\"".$link."\">Klicka här!</a>
 					  </body>
 					</html>
 					";
