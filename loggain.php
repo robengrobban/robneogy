@@ -45,55 +45,57 @@ if ( isLoggedIn() ) {
 			$userName = clearData($_POST['username']);
 			$userPassword = clearData($_POST['password']);
 
-
-
+			//Anslut till databasen
 			include "php/include/connect-database.php";
 
-
+			//Förbered en fråga
 			$stmt = $conn->prepare("SELECT * FROM account WHERE username = ? OR mail = ?");
 			$stmt->bind_param ("ss", $userName, $userName);
+			//Kör
 			$stmt->execute();
 
+			//Hämta resultatet
 			$res = $stmt->get_result();
 
+			//Kolla ifall vi inte fick ett svar, i så fall skicka fel meddelande
 			if ($res->num_rows==0) {
 				echo '<div id="error-msg">
 					<p>Fel användarnamn/email eller lösenord</p>
 				</div>';
 			}
 			else{
+				//Hämta resultatet
 				$res=$res->fetch_all(MYSQLI_ASSOC)[0];
+				//Kolla ifall lösenordet stämmer
 				if (password_verify($userPassword, $res["password"])) {
+					//Hämta data och spara det i en session
 					$_SESSION["user-id"]=$res["id"];
 					$_SESSION["user-name"]=$res["username"];
 					$_SESSION["user-email"]=$res["mail"];
 					$_SESSION["user-firstname"]=$res["firstname"];
 					$_SESSION["user-lastname"]=$res["lastname"];
+					//Ifall användaren har ett ID spara det i en session
 					if (isset($res["teamId"])) {
 						$_SESSION["user-teamId"]=$res["teamId"];
 					}
+					//Stäng anslutningarna
 					$stmt->close();
 					$conn->close();
+
+					//Skicka användaren till startsidan
 					header("Location: index.php");
 
 				}
+				//Fel användarnamn eller lösenord.
 				else{
 				echo '<div id="error-msg">
 					<p>Fel användarnamn eller lösenord</p>
 				</div>';
 				}
 			}
+			//Stänger anslutningar
 			$stmt->close();
 			$conn->close();
-
-
-
-			//kolla om användarnamn.
-			//kolla så att tlösenordet stämmer med användarnamnet.
-			//om det stämmer, låt dem logga in.
-
-
-
 
 		}
 		//Kolla så att man faktiskt har tryckt på knappen

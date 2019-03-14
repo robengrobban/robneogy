@@ -184,6 +184,7 @@ $conn->close();
 				<div class="vote-container">
 					<p class="votes">0</p>
 					<?php
+					//Olika fall beroende på ifall användaren har röstat eller inte
 					if (!$haveVoted && $isLoggedIn && !$matchDone) {
 						echo '<form method="POST">
 								<button type="submit" name="röstLagTvå" class="to-vote">Rösta</button>

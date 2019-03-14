@@ -111,6 +111,7 @@ if ( isset($_SESSION['user-teamId']) ) {
 		?>
 
 		<?php
+		//Ifall användaren inte har ett teamId ska information komma upp
 		if ( !isset($_SESSION['user-teamId']) ) {
 			echo '<form method="POST">
 				<header>

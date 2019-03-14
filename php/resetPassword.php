@@ -1,4 +1,4 @@
-<?php  
+<?php
 include 'include/main-include.php';
 include 'include/clear-data.php';
 include 'include/session-start.php';
@@ -17,36 +17,34 @@ if ( isLoggedIn() ) {
 }
 
 if (isset($_GET['userEmail'])&& isset($_GET['userName'])&& isset($_GET['veriKey'])) {
+	//Hämta datan
 	$email = clearData($_GET['userEmail']);
 	$name = clearData($_GET['userName']);
 	$key = clearData($_GET['veriKey']);
 
+	//Anslut till databasen och hämta antalet användare med den veriKey
 	include 'include/connect-database.php';
-	$stmt = $conn->prepare("SELECT count(*) FROM account WHERE mail = ? AND username = ? AND veriKey = ? "); 
+	$stmt = $conn->prepare("SELECT count(*) FROM account WHERE mail = ? AND username = ? AND veriKey = ? ");
 	$stmt->bind_param("sss",$email, $name, $key);
 	$stmt->execute();
 
+	//Spara resultatet
 	$res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['count(*)'];
 
-
+	//Ifall det inte finns 1
 	if ($res != 1) {
-			header("Location: error.php?error-msg=Åtkomst nekad!");	
+		//Åtkoåmst nekad
+		header("Location: error.php?error-msg=Åtkomst nekad!");
 	}
-	
 
+	//Stänger anslutningarna
 	$stmt->close();
 	$conn->close();
 
 }
 else{
 	header("Location: error.php?error-msg=Åtkomst nekad!");
-
 }
-
-
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -64,7 +62,7 @@ else{
 		<link rel="stylesheet" type="text/css" href="../css/nav.css">
 		<link rel="stylesheet" type="text/css" href="../css/skapakonto.css">
 
-		
+
 </head>
 <body>
 		<!--TILLBAKA-->
@@ -73,13 +71,14 @@ else{
 				<li><a href="../index.php">Hem</a></li>
 			</ul>
 		</nav>
-<?php  
-#pungsäck
+<?php
+//Kolla ifall lösenordet är satt eller inte
 if (isset($_POST['reset'])&& isset($_POST['password']) &&isset($_POST['password-rep'])) {
+	//Hämta data
 	$userPassword = clearData($_POST['password']);
 	$userPasswordRep = clearData($_POST['password-rep']);
 
-	
+	//Kolla så att lösenordet matchar
 	if ( preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,100}$/', $userPassword) ) {
 
 		if ($userPassword != $userPasswordRep) {
@@ -87,7 +86,8 @@ if (isset($_POST['reset'])&& isset($_POST['password']) &&isset($_POST['password-
 			<p>Lösenorden matchar ej!</p>
 		  </div>';
 		} else{
-			
+
+			//Anslut till databasen
 			include "include/connect-database.php";
 
 			$stmt = $conn->prepare("UPDATE account SET password = ? WHERE username = ? AND mail = ?");
@@ -96,29 +96,32 @@ if (isset($_POST['reset'])&& isset($_POST['password']) &&isset($_POST['password-
 			//Hasha lösenordet
 			$userPassword = password_hash($userPassword, PASSWORD_DEFAULT);
 
+			//Kör fråga och stäng sedan anslutningen
 			$stmt->execute();
 			$stmt->close();
 
+			//Ändra veri key
 			$stmt = $conn->prepare("UPDATE account SET veriKey = NULL WHERE username = ? AND mail = ?");
 			$stmt->bind_param("ss", $name, $email);
 
 			$stmt->execute();
 
+			//Stäng anslutningar
 			$stmt->close();
 			$conn->close();
-			
 
+			//Lyckades
 			header("Location:success.php?success-msg=Lösenord ändrat!");
 		}
 	}
 	else{
 		echo '<div id="error-msg">
 			<p>Lösenorden måste vara 8 tecken långt, inte fler än 100. Måste innehålla bokstäver och siffror!</p>
-		  </div>';	
+		  </div>';
 		}
 
 
-	
+
 }
 else if(isset($_POST['reset'])){
 	echo '<div id="error-msg">
@@ -134,7 +137,7 @@ else if(isset($_POST['reset'])){
 			<header>
 				<h1>Återställ Lösenord</h1>
 			</header>
-			
+
 			<div id="password-container">
 				<label for="password">Lösenord:</label>
 				<input required type="password" name="password" placeholder="Skriv lösenord">
@@ -143,7 +146,7 @@ else if(isset($_POST['reset'])){
 				<label for="password-rep">Återupprepa lösenord:</label>
 				<input required type="password" name="password-rep" placeholder="Upprepa lösenord">
 			</div>
-			
+
 			<button type="submit" name="reset">Återställ Lösenord</button>
 
 		</form>
