@@ -42,7 +42,7 @@ if ( isset($_SESSION['user-teamId']) ) {
 		<?php
 		//Kolla så att man klickat på skapa lag
 		if (isset($_POST['create']) &&
-				isset($_POST['team-name']) && clearData('team-name') != ""
+				isset($_POST['team-name']) && trim($_POST['team-name']) != ""
 		) {
 			//Hämta data
 			$userTeamName = clearData($_POST['team-name']);
