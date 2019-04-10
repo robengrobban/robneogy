@@ -10,3 +10,9 @@ Robert och Neo gymnasiearbete.
 6. Ladda ner senaste database backupen som finns på drive.
 7. Importera backupen till MySQL.
 8. Kör projektet!
+
+# Var uppmärksam på följande
+1. För att återställa mail systemet ska fungera måste mail funktionen vara inställd i XAMPP. Annars kommer inga mail att skickas.
+2. För att kunna ladda upp foton för sin profil måste XAMPP vara inställd på att:
+  a. Tillåta filöverföring.
+  b. En lämplig maxgräns för filöverföring inställd i XAMPP.
