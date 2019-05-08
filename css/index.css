@@ -156,10 +156,10 @@
 		font-size: 0.9rem;
 	}
 	#upcoming-matches .team-container div p:hover {
-	font-size: 1.7rem !important;
-}
+		font-size: 1.7rem !important;
+	}
 	#completed-matches .team-container div p:hover {
-	font-size: 0.94rem !important;
+		font-size: 0.94rem !important;
 	}
 
 }
