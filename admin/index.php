@@ -6,7 +6,7 @@ include '../php/include/session-start.php';
 <html lang="sv">
 	<head>
 		<!--STANDARD INITIERING-->
-		<title>Robot Wars Nacka Gymnasium</title>
+		<title>Robot Wars Nacka Gymnasium Admin</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
