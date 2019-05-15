@@ -29,7 +29,7 @@ if ( !isset($_SESSION['admin-loggedIn']) ) {
 		$res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 			
 		//Gå igenom listan och skriv ut allt i en fin tabell
-		echo '<table border="1">';
+		echo '<h1>Användare</h1><table border="1">';
 			echo '<tr>';
 				echo '<th>id</th>';
 				echo '<th>username</th>';
@@ -59,7 +59,7 @@ if ( !isset($_SESSION['admin-loggedIn']) ) {
 		$stmt->execute();
 		$res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 		//Gå igenom listan och skriv ut allt i en fin tabell
-		echo '<table border="1">';
+		echo '<h1>Lag</h1><table border="1">';
 			echo '<tr>';
 				echo '<th>id</th>';
 				echo '<th>name</th>';
@@ -77,7 +77,7 @@ if ( !isset($_SESSION['admin-loggedIn']) ) {
 		$stmt->execute();
 		$res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 		//Gå igenom listan och skriv ut allt i en fin tabell
-		echo '<table border="1">';
+		echo '<h1>Matcher</h1><table border="1">';
 			echo '<tr>';
 				echo '<th>id</th>';
 				echo '<th>accountId</th>';
@@ -103,12 +103,12 @@ if ( !isset($_SESSION['admin-loggedIn']) ) {
 		echo '</table>';
 
 
-		//Hämta information om matcher
+		//Hämta information om kommentarer
 		$stmt = $conn->prepare("SELECT * FROM comments");
 		$stmt->execute();
 		$res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 		//Gå igenom listan och skriv ut allt i en fin tabell
-		echo '<table border="1">';
+		echo '<h1>Kommentarer</h1><table border="1">';
 			echo '<tr>';
 				echo '<th>id</th>';
 				echo '<th>accountId</th>';
