@@ -66,31 +66,40 @@ if ( isLoggedIn() ) {
 			else{
 				//Hämta resultatet
 				$res=$res->fetch_all(MYSQLI_ASSOC)[0];
-				//Kolla ifall lösenordet stämmer
-				if (password_verify($userPassword, $res["password"])) {
-					//Hämta data och spara det i en session
-					$_SESSION["user-id"]=$res["id"];
-					$_SESSION["user-name"]=$res["username"];
-					$_SESSION["user-email"]=$res["mail"];
-					$_SESSION["user-firstname"]=$res["firstname"];
-					$_SESSION["user-lastname"]=$res["lastname"];
-					//Ifall användaren har ett ID spara det i en session
-					if (isset($res["teamId"])) {
-						$_SESSION["user-teamId"]=$res["teamId"];
+
+				//Kontrollera så att användaren inte är bannad
+				if ( $res['ban'] == 0 ) {
+					//Kolla ifall lösenordet stämmer
+					if (password_verify($userPassword, $res["password"])) {
+						//Hämta data och spara det i en session
+						$_SESSION["user-id"]=$res["id"];
+						$_SESSION["user-name"]=$res["username"];
+						$_SESSION["user-email"]=$res["mail"];
+						$_SESSION["user-firstname"]=$res["firstname"];
+						$_SESSION["user-lastname"]=$res["lastname"];
+						//Ifall användaren har ett ID spara det i en session
+						if (isset($res["teamId"])) {
+							$_SESSION["user-teamId"]=$res["teamId"];
+						}
+						//Stäng anslutningarna
+						$stmt->close();
+						$conn->close();
+
+						//Skicka användaren till startsidan
+						header("Location: index.php");
+
 					}
-					//Stäng anslutningarna
-					$stmt->close();
-					$conn->close();
-
-					//Skicka användaren till startsidan
-					header("Location: index.php");
-
+				} else if ( $res['ban'] == 1 ) {
+					//Användaren är bannad!
+					echo '<div id="error-msg">
+						<p>Detta konto är avstängt!</p>
+					</div>';
 				}
 				//Fel användarnamn eller lösenord.
 				else{
-				echo '<div id="error-msg">
-					<p>Fel användarnamn eller lösenord</p>
-				</div>';
+					echo '<div id="error-msg">
+						<p>Fel användarnamn eller lösenord</p>
+					</div>';
 				}
 			}
 			//Stänger anslutningar

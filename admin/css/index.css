@@ -1,5 +1,7 @@
 /*MOBIL*/
-
+* {
+	box-sizing: border-box;
+}
 
 
 /*DESKTOP*/
