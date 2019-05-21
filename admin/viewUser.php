@@ -20,15 +20,10 @@ $userId = clearData($_GET['id']);
 $stmt->bind_param("i", $userId);
 $stmt->execute();
 $accountInfo = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0];
-var_dump($accountInfo);
 
 if ( $accountInfo == NULL ) {
 	header("Location: index.php");
 }
-
-//Stäng anslutningar
-$stmt->close();
-$conn->close();
 
 ?>
 <!DOCTYPE html>
@@ -108,10 +103,26 @@ $conn->close();
 
 		<div>
 			<?php
-			if ( !isset($accountInfo['teamId']) && !is_null($accountInfo['teamId']) ) {
-				echo '<a href="">Till lag:</a>';
+			if ( isset($accountInfo['teamId']) && !is_null($accountInfo['teamId']) ) {
+				echo '<a target="_blank" href="viewTeam.php?id='.$accountInfo['teamId'].'">Till användarens lag</a>';
 			}
 			?>
+		</div>
+
+		<div>
+			<a target="_blank" href="mailto:<?php echo $accountInfo['mail'] ?>">Skicka mail</a>
+		</div>
+
+		<div>
+			<button onclick="var x = document.getElementById('account-bild');if (x.style.display==='none'){x.style.display = 'block';}else{x.style.display = 'none';}"
+			>
+				Visa/Göm bild
+			</button>
+
+			<?php
+			echo '<img id="account-bild" style="display:none;width:100%;height:auto;" src="../user/uploads/'.$accountInfo['imageURL'].'">';
+			?>
+
 		</div>
 
 		<form method="POST">
@@ -159,6 +170,37 @@ $conn->close();
 
 			</fieldset>
 		</form>
+
+		<table border="1">
+			
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>spel id</th>
+					<th>innehåll</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<?php
+				//Anslut till databas och hämta användarens kommentarer
+				$stmt = $conn->prepare("SELECT * FROM comments WHERE accountId = ?");
+				$stmt->bind_param("i", $userId);
+				$stmt->execute();
+
+				$res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+				for ( $i = 0; $i < count($res); $i++ ) {
+					echo '<tr>';
+						echo '<td><a href="viewComment.php?id='.$res[$i]['id'].'">'.$res[$i]['id'].'</a></td>';
+						echo '<td><a href="viewGame.php?id='.$res[$i]['gameId'].'">'.$res[$i]['gameId'].'</a></td>';
+						echo '<td>'.$res[$i]['content'].'</td>';
+					echo '</tr>';
+				}
+
+				?>
+			</tbody>
+
+		</table>
 
 	</body>
 </html>
