@@ -17,44 +17,38 @@ if ( !isset($_SESSION['admin-loggedIn']) ) {
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+		<!--JQUERY LÄNK-->
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+		<!--JS LÄNK-->
+		<script type="text/javascript" src="js/panel.js"></script>
 	</head>
-	<body>
+	<body onload="loadAccount('')">
+		<h1>Användare</h1>
+		<label>Sök användare: <input type="text" oninput="loadAccount(this.value)"></label>
+		<table id="search-account" border="1" >
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>username</th>
+					<th>mail</th>
+					<th>firstname</th>
+					<th>lastname</th>
+					<th>teamId</th>
+					<th>imageURL</th>
+					<th>ban</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+
+
 		<?php
-		/* 
-		 * Här kommer kod som skriver ut alla saker man kan göra, så som att välja användare osv
-		 */
 		//Anslut till databasen och hämta alla användare
 		include 'php/include/connect-database.php';
-		$stmt = $conn->prepare("SELECT * FROM account");
-		$stmt->execute();
-		$res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-			
-		//Gå igenom listan och skriv ut allt i en fin tabell
-		echo '<h1>Användare</h1><table border="1">';
-			echo '<tr>';
-				echo '<th>id</th>';
-				echo '<th>username</th>';
-				echo '<th>mail</th>';
-				echo '<th>firstname</th>';
-				echo '<th>lastname</th>';
-				echo '<th>teamId</th>';
-				echo '<th>imageURL</th>';
-				echo '<th>ban</th>';
-			echo '</tr>';
-		for ($i=0; $i < count($res);$i++) {
-			echo '<tr>';
-				echo '<td><a target="_blank" href="viewUser.php?id='.$res[$i]['id'].'">'.$res[$i]['id'].'</a></td>';
-				echo '<td>'.$res[$i]['username'].'</td>';
-				echo '<td><a target="_blank" href="mailto:'.$res[$i]['mail'].'">'.$res[$i]['mail'].'</td>';
-				echo '<td>'.$res[$i]['firstname'].'</td>';
-				echo '<td>'.$res[$i]['lastname'].'</td>';
-				echo '<td><a target="_blank" href="viewTeam.php?id='.$res[$i]['teamId'].'">'.$res[$i]['teamId'].'</a></td>';
-				echo '<td><a target="_blank" href="../user/uploads/'.$res[$i]['imageURL'].'">'.$res[$i]['imageURL'].'</a></td>';
-				echo '<td>'.$res[$i]['ban'].'</td>';
-			echo '</tr>';
-		}
-		echo '</table>';
-
 		//Hämta information om lag
 		$stmt = $conn->prepare("SELECT * FROM team");
 		$stmt->execute();

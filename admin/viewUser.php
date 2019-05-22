@@ -50,7 +50,7 @@ if ( $accountInfo == NULL ) {
 
 				echo '<label>Efternamn:</label><input name="input-lastname" type="text" value="'.$accountInfo['lastname'].'" >';
 
-
+				
 				//Kolla ifall knappen uppdatera har klickats på
 				if ( isset($_POST['skicka-namn']) && isset($_POST['input-firstname']) && isset($_POST['input-username']) && isset($_POST['input-lastname']) && trim($_POST['input-firstname']) != "" && trim($_POST['input-username']) != "" && trim($_POST['input-lastname']) != "" ) {
 
