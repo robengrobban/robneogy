@@ -191,8 +191,8 @@ if ( $accountInfo == NULL ) {
 				$res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 				for ( $i = 0; $i < count($res); $i++ ) {
 					echo '<tr>';
-						echo '<td><a href="viewComment.php?id='.$res[$i]['id'].'">'.$res[$i]['id'].'</a></td>';
-						echo '<td><a href="viewGame.php?id='.$res[$i]['gameId'].'">'.$res[$i]['gameId'].'</a></td>';
+						echo '<td><a target="_blank" href="viewComment.php?id='.$res[$i]['id'].'">'.$res[$i]['id'].'</a></td>';
+						echo '<td><a target="_blank" href="viewGame.php?id='.$res[$i]['gameId'].'">'.$res[$i]['gameId'].'</a></td>';
 						echo '<td>'.$res[$i]['content'].'</td>';
 					echo '</tr>';
 				}

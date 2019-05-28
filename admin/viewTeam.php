@@ -67,7 +67,7 @@ $teamInfo = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0];
 						$conn->close();
 
 						//Ladda om sidan
-						header("Location: viewUser.php?id=" . $teamId);
+						header("Location: viewTeam.php?id=" . $teamId);
 
 					} else {
 						//Error
@@ -82,10 +82,6 @@ $teamInfo = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0];
 					//Error
 					echo "<div id='error-msg'>Alla fälten måste vara ifylda.</div>";
 				}
-
-
-				}
-
 
 				?>
 
