@@ -7,9 +7,8 @@ Robert och Neo gymnasiearbete.
 3. Gå till mappen php som finns där projektet plaserades, sedan include och öppna connect-database.php.
 4. Ändra $serverip till databas IP, så som localhost.
 5. Ändra $username och $password till något passande.
-6. Ladda ner senaste databas backupen som finns på drive.
-7. Importera den nedladdade databas backupen till MySQL med databasnamnet databaseGy, om annat måste variabelnamnet $database ändras i connect-database.php.
-8. Kör projektet!
+6. Importera den senaste databas backupen till MySQL med databasnamnet databaseGy, om annat måste variabelnamnet $database ändras i connect-database.php. Det finns en map 'db-backup' på projektet där databas backupen finns.
+7. Kör projektet!
 
 # Var uppmärksam på följande
 1. För att återställa lösenord systemet ska fungera måste mail funktionen vara inställd i XAMPP. Annars kommer inga mail att skickas.
