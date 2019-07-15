@@ -1,7 +1,7 @@
 /*MOBIL*/
 #front-page-header {
 	width: 100%;
-	height: 60vh;
+	height: 80vh;
 	background-image: url("../img/front-page.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
@@ -19,30 +19,34 @@
 	top: -10%;
 	left: 50%;
 	color: #fff;
-	padding: 1%;
+	padding: 4%;
 	background-color: rgba(0,0,0,0.8);
 	transform: translate(-50%,-50%);
 	opacity: 0;
-	transition: top 2s, opacity 3s;
+	transition: top 2s, opacity 2s;
 }
 #front-page-header h1 span {
 	font-size: 1.5rem;
 }
 
 #container-matches {
-	overflow: auto;
-	background-color: white !important;
-	z-index: 5 !important;	
-	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5) !important;
-	display: block !important;
-	position: relative !important;
+	overflow: hidden;
+	z-index: 5;	
+	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+	display: block;
+	position: relative;
+	background-color: #E8E8E8;
 }
 
 #upcoming-matches {
+	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 	width: 100%;
 	height: auto;
 	padding: 2%;
 	float: left;
+	position: relative;
+	z-index: 7;
+	background-color: #F5F5F5;
 }
 #upcoming-matches h2 {
 	width: 100%;
@@ -58,23 +62,27 @@
 	overflow: hidden;
 	position: relative;
 	background-color: #60AFDB;
-	border-radius: 0.15rem;
+	border-radius: 0.3rem;
 	cursor: pointer;
 
 }
 #upcoming-matches .team-container div p {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	text-align: center;
-	padding: 2%;
-}
-#upcoming-matches .team-container div p .team-one {
+	color: #262221;
 	padding: 1%;
 }
-#upcoming-matches .team-container div p .team-vs {
-	padding: 1% 2%;
+
+.team-container div p .team-one {
+	padding: 1% 1% 0 1%;
+	display: block;
 }
-#upcoming-matches .team-container div p .team-two {
-	padding: 1%;
+.team-container div p .team-vs {
+	display: block;
+}
+.team-container div p .team-two {
+	padding: 0 1% 1% 1%;
+	display: block;
 }
 
 #completed-matches {
@@ -83,6 +91,9 @@
 	padding: 2%;
 	float: left;
 	height: 100%;
+	position: relative;
+	z-index: 6;
+	background-color: #E8E8E8;
 }
 #completed-matches h2 {
 	width: 100%;
@@ -97,26 +108,21 @@
 	overflow: hidden;
 	position: relative;
 	background-color: #ffec66;
-	border-radius: 0.15rem;
+	border-radius: 0.3rem;
 	cursor: pointer;
 }
 #completed-matches .team-container div p {
 	font-size: 1.4rem;
 	text-align: center;
-	padding: 2%;
-}
-#completed-matches .team-container div p .team-one {
-	padding: 1%;
-}
-#completed-matches .team-container div p .team-vs {
-	padding: 1% 2%;
-}
-#completed-matches .team-container div p .team-two {
+	color: #262221;
 	padding: 1%;
 }
 
 .team-container div {
-	transition: 0.2s !important;
+	transition: width 0.2s, margin 0.2s, box-shadow 0.2s !important;
+}
+.team-container div p {
+	transition: font-size 0.2s !important;
 }
 .team-container div:hover {
 	width: 95% !important;
@@ -124,42 +130,57 @@
 	margin-right: 2.5% !important;
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5) !important;
 }
-#upcoming-matches .team-container div p {
-	transition: font-size 0.2s !important;
-}
-#completed-matches .team-container div p {
-	transition: font-size 0.2s !important;
-}
-
 
 /*DESKTOP*/
 @media only screen and (min-width: 800px) {
 	#front-page-header {
-		height: 75vh;
+		height: 80vh;
 		z-index: 11;
+	}
+	#front-page-header h1 {
+		font-size: 4rem;
+		padding: 2%;
+	}
+	#front-page-header h1 span {
+		font-size: 2rem;
+	}
+
+	#container-matches {
+		display: flex !important;
 	}
 
 	#upcoming-matches {
-		width: 65%;
+		width: 70%;
+		float: none;
+	}
+	#upcoming-matches h2 {
+		font-size: 2.3rem;
+	}
+	#upcoming-matches .team-container div {
+		margin: 3% 4%;
 	}
 	#upcoming-matches .team-container div p {
 		font-size: 1.6rem;
 	}
 
 	#completed-matches {
-		width: 35%;
+		width: 30%;
+		float: none;
+	}
+	#completed-matches h2 {
+		font-size: 2rem;
 	}
 	#completed-matches .team-container div {
-		margin: 6% 4%;
+		margin: 3% 4%;
 	}
 	#completed-matches .team-container div p {
-		font-size: 0.9rem;
+		font-size: 1.2rem;
 	}
 	#upcoming-matches .team-container div p:hover {
 		font-size: 1.7rem !important;
 	}
 	#completed-matches .team-container div p:hover {
-		font-size: 0.94rem !important;
+		font-size: 1.3rem !important;
 	}
 
 }

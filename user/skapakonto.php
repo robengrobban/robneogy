@@ -169,47 +169,49 @@ if ( isLoggedIn() ) {
 		?>
 		
 		<!--FROM FÖR INLOGG-->
-		<form method="POST">
+		<div id="login-form-container"> 
+			<form method="POST">
 
-			<header>
-				<h1>Skapa konto</h1>
-			</header>
+				<header>
+					<h1>Skapa konto</h1>
+				</header>
 
-			<div id=firstname-container>
-				<label for="firstname">Förnamn:</label>
-				<input required type="text" name="firstname" placeholder="Skriv förnamn">
-			</div>
+				<div id=firstname-container>
+					<label for="firstname">Förnamn:</label>
+					<input required type="text" name="firstname" placeholder="Skriv förnamn">
+				</div>
 
-			<div id="lastname-container">
-				<label for="lastname">Efternamn:</label>
-				<input required type="text" name="lastname" placeholder="Skriv efternamn">
-			</div>
+				<div id="lastname-container">
+					<label for="lastname">Efternamn:</label>
+					<input required type="text" name="lastname" placeholder="Skriv efternamn">
+				</div>
 
-			<div id="username-container">
-				<label for="username">Användarnamn:</label>
-				<input required type="text" name="username" placeholder="Skriv användarnamn">
-			</div>
+				<div id="username-container">
+					<label for="username">Användarnamn:</label>
+					<input required type="text" name="username" placeholder="Skriv användarnamn">
+				</div>
 
-			<div id=email-container>
-				<label for="email">Email:</label>
-				<input required type="email" name="email" placeholder="Skriv email address">
-			</div>
+				<div id=email-container>
+					<label for="email">Email:</label>
+					<input required type="email" name="email" placeholder="Skriv email address">
+				</div>
 
-			<div id="password-container">
-				<label for="password">Lösenord:</label>
-				<input required type="password" name="password" placeholder="Skriv lösenord">
+				<div id="password-container">
+					<label for="password">Lösenord:</label>
+					<input required type="password" name="password" placeholder="Skriv lösenord">
 
-				<label for="password-rep">Återupprepa lösenord:</label>
-				<input required type="password" name="password-rep" placeholder="Upprepa lösenord">
-			</div>
+					<label for="password-rep">Återupprepa lösenord:</label>
+					<input required type="password" name="password-rep" placeholder="Upprepa lösenord">
+				</div>
 
-			<div id="agreement-container">
-				<span>Genom att skapa ett konto <strong><u>godtjäner jag</u></strong> "Robot Wars Nacka Gymnasiums" <a href="agreement/pp.html" target="_blank"><strong>Sekretesspolicy</strong></a> och <a href="agreement/tos.html" target="_blank"><strong>Användarvillkor.</strong></a></span>
-			</div>
+				<div id="agreement-container">
+					<span>Genom att skapa ett konto <strong><u>godtjäner jag</u></strong> "Robot Wars Nacka Gymnasiums" <a href="agreement/pp.html" target="_blank"><strong>Sekretesspolicy</strong></a> och <a href="agreement/tos.html" target="_blank"><strong>Användarvillkor.</strong></a></span>
+				</div>
 
-			<button type="submit" name="create">Skapa konto</button>
+				<button type="submit" name="create">Skapa konto</button>
 
-		</form>
+			</form>
+		</div>
 
 		<!--FOOTER-->
 		<?php

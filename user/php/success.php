@@ -27,7 +27,7 @@ include 'include/main-include.php';
 			</nav>
 		
 		<header>
-			<h1 style="text-align: center; width: 100%; padding: 2%;">Lyckades!</h1>
+			<h1 style="text-align: center; width: 100%; padding: 3% 0 1% 0;">Lyckades!</h1>
 		</header>
 
 		<?php

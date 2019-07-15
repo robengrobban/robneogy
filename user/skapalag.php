@@ -113,7 +113,7 @@ if ( isset($_SESSION['user-teamId']) ) {
 		<?php
 		//Ifall användaren inte har ett teamId ska information komma upp
 		if ( !isset($_SESSION['user-teamId']) ) {
-			echo '<form method="POST">
+			echo '<div id="login-form-container"><form method="POST">
 				<header>
 					<h1>Skapa lag</h1>
 				</header>
@@ -122,7 +122,7 @@ if ( isset($_SESSION['user-teamId']) ) {
 					<input required type="text" name="team-name">
 				</div>
 				<button type="submit" name="create">Skapa</button>
-			</form>';
+			</form></div>';
 		}
 		?>
 

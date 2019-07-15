@@ -2,8 +2,14 @@
 header h1 {
 	text-align: center;
 	padding-top: 4%;
+	font-size: 3rem;
 }
-
+#shadow-container {
+	overflow: hidden;
+	position: relative;
+	z-index: 5;
+	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+}
 #match-container {
 	width: 95%;
 	margin: 2.5%;
@@ -111,9 +117,6 @@ header h1 {
 #comment-container .comment span a:hover{
 	text-decoration: underline;	
 	color: #ffec66;
-
-
-
 }
 
 #comment-container #to-comment {

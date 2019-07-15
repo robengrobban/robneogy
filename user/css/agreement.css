@@ -9,18 +9,24 @@ section h2 {
 	padding-bottom: 0.5%;
 	letter-spacing: 0.1rem;
 }
+section h3 {
+	font-size: 1.4rem;
+}
 section p {
-	font-size: 1rem;
+	font-size: 1.2rem;
 	margin: 0 0 2% 0;
 }
 section ol {
-	margin: 0 0 2% 6%;
+	margin: 0 0 2% 4%;
+	font-size: 1.2rem;
 }
 section ol li {
 	margin-bottom: 1%;
+	font-size: 1.2rem;
 }
 .list-inside {
-	margin: 2% 0 2% 6%;
+	margin: 2% 0 2% 4%;
+	font-size: 1.2rem;
 }
 
 @media only screen and (min-width: 800px) {

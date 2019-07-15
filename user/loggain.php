@@ -116,27 +116,29 @@ if ( isLoggedIn() ) {
 		?>
 
 		<!--FORM FÖR INLOGG-->
-		<form method="POST">
+		<div id="login-form-container"> 
+			<form method="POST">
 
-			<header>
-				<h1>Logga in</h1>
-			</header>
+				<header>
+					<h1>Logga in</h1>
+				</header>
 
-			<div id="username-container">
-				<label>Användarnamn eller email:</label>
-				<input required type="text" name="username" placeholder="Skriv användarnamn eller email">
-			</div>
+				<div id="username-container">
+					<label>Användarnamn eller email:</label>
+					<input required type="text" name="username" placeholder="Skriv användarnamn eller email">
+				</div>
 
-			<div id="password-container">
-				<label for="password">Lösenord:</label>
-				<input required type="password" name="password" placeholder="Skriv lösenord">
-			</div>
+				<div id="password-container">
+					<label for="password">Lösenord:</label>
+					<input required type="password" name="password" placeholder="Skriv lösenord">
+				</div>
 
-			<span><a href="php/requestPassword.php">Glömt lösenord? Återställ det!</a></span>
+				<span><a href="php/requestPassword.php">Glömt lösenord? Återställ det!</a></span>
 
-			<button type="submit" name="login">Logga in</button>
+				<button type="submit" name="login">Logga in</button>
 
-		</form>
+			</form>
+		</div>
 
 		<!--FOOTER-->
 		<?php
