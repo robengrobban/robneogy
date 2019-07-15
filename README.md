@@ -4,7 +4,7 @@ Robert och Neo gymnasiearbete.
 # Installation
 1. Ladda ner projektet
 2. Placera projektets mapp i ett program som kan simulera en server, så som XAMPP.
-3. Gå till mappen php som finns där projektet plaserades, sedan include och öppna connect-database.php.
+3. Gå till mappen user -> php -> include och öppna sedan connect-database.php.
 4. Ändra $serverip till databas IP, så som localhost.
 5. Ändra $username och $password till något passande.
 6. Importera den senaste databas backupen till MySQL med databasnamnet databaseGy, om annat måste variabelnamnet $database ändras i connect-database.php. Det finns en map 'db-backup' på projektet där databas backupen finns.
