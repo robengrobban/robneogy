@@ -13,8 +13,8 @@
 }
 #main-nav ul li a {
 	display: block;
-	font-size: 2.2rem;
-	padding: 3% 3%;
+	font-size: 2rem;
+	padding: 3%;
 	text-decoration: none;
 	text-align: center;
 	color: white;
@@ -40,7 +40,7 @@
 }
 #back-nav ul li a {
 	display: block;
-	font-size: 1.4rem;
+	font-size: 2.2rem;
 	padding: 2%;
 	text-decoration: none;
 	text-align: center;
@@ -63,7 +63,7 @@
 }
 #agree-nav ul li a {
 	display: block;
-	font-size: 1.4rem;
+	font-size: 2.2rem;
 	padding: 2%;
 	text-decoration: none;
 	text-align: center;
@@ -90,7 +90,7 @@
 	}
 	#main-nav ul li a {
 		float: left;
-		font-size: 1.3rem;
+		font-size: 1.8rem;
 		padding: 1.5% 3%;
 	}
 	#menu {

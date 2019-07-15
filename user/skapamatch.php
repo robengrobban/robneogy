@@ -45,96 +45,96 @@ else if ( !isset($_SESSION['user-teamId']) ) {
 			</ul>
 		</nav>
 
-		<header>
-			<h1>Skapa match</h1>
-		</header>
+			<?php
+			//Kolla så att ett lagnamn har skrivits in
+			if ( isset($_POST['search-team']) && clearData($_POST['search-team']) != "" ) {
+				//Spara data och rensa inputen
+				$searchTeam = clearData($_POST['search-team']);
 
-		<?php
-		//Kolla så att ett lagnamn har skrivits in
-		if ( isset($_POST['search-team']) && clearData($_POST['search-team']) != "" ) {
-			//Spara data och rensa inputen
-			$searchTeam = clearData($_POST['search-team']);
+				//Anslut till databasen
+				include 'php/include/connect-database.php';
 
-			//Anslut till databasen
-			include 'php/include/connect-database.php';
+				//Kolla ifall det inskrivna laget är samma som skaparens lag
+				//Detta kan göras utan prepare statement eftersom användaren
+				//Påverark inte datan som skrivs in
+				$res = $conn->query("SELECT name FROM team WHERE id = " . $_SESSION['user-teamId']);
+				$res = $res->fetch_all(MYSQLI_ASSOC)[0]['name'];
 
-			//Kolla ifall det inskrivna laget är samma som skaparens lag
-			//Detta kan göras utan prepare statement eftersom användaren
-			//Påverark inte datan som skrivs in
-			$res = $conn->query("SELECT name FROM team WHERE id = " . $_SESSION['user-teamId']);
-			$res = $res->fetch_all(MYSQLI_ASSOC)[0]['name'];
+				//Kolla ifall de är samma
+				if (strtolower($res) != strtolower($searchTeam)) {
 
-			//Kolla ifall de är samma
-			if (strtolower($res) != strtolower($searchTeam)) {
-
-				//Kolla ifall det inskrivna laget finns
-				$stmt = $conn->prepare("SELECT * FROM team WHERE name = ?");
-				$stmt->bind_param("s", $searchTeam);
-				//Kör frågan
-				$stmt->execute();
-				//Spara resultatet
-				$res2 = $stmt->get_result();
-
-				//Kolla ifall något svar fick. I så fall finns det ett lag med det namnet
-				if ( $res2 && $res2->num_rows > 0) {
-
-					//Laget finns, dags att skapa en match
-					//Detta görs genom att sätta in lagen i match tabellen
-
-					//Hämta ID för det andra laget
-					$idAccount = $_SESSION['user-id'];
-					$idTeamOne = $res2->fetch_all(MYSQLI_ASSOC)[0]['id'];
-					$idTeamTwo = $_SESSION['user-teamId'];
-					$done = 0;
-					$votesTeamOne = 1;
-					$votesTeamTwo = 1;
-
-					//Skapa en fråga för databasen
-					$stmt->prepare("INSERT INTO game (accountId, teamIdOne, teamIdTwo, done, votesTeamOne, votesTeamTwo) VALUES (?,?,?,?,?,?);");
-					$stmt->bind_param("iiiiii", $idAccount, $idTeamOne, $idTeamTwo, $done, $votesTeamOne, $votesTeamTwo);
-					//Skapa match
+					//Kolla ifall det inskrivna laget finns
+					$stmt = $conn->prepare("SELECT * FROM team WHERE name = ?");
+					$stmt->bind_param("s", $searchTeam);
+					//Kör frågan
 					$stmt->execute();
+					//Spara resultatet
+					$res2 = $stmt->get_result();
 
-					//Klar meddelande
-					header("Location: php/success.php?success-msg=En match mellan lagen ".$searchTeam." och ".$res." har skapats!");
+					//Kolla ifall något svar fick. I så fall finns det ett lag med det namnet
+					if ( $res2 && $res2->num_rows > 0) {
+
+						//Laget finns, dags att skapa en match
+						//Detta görs genom att sätta in lagen i match tabellen
+
+						//Hämta ID för det andra laget
+						$idAccount = $_SESSION['user-id'];
+						$idTeamOne = $res2->fetch_all(MYSQLI_ASSOC)[0]['id'];
+						$idTeamTwo = $_SESSION['user-teamId'];
+						$done = 0;
+						$votesTeamOne = 1;
+						$votesTeamTwo = 1;
+
+						//Skapa en fråga för databasen
+						$stmt->prepare("INSERT INTO game (accountId, teamIdOne, teamIdTwo, done, votesTeamOne, votesTeamTwo) VALUES (?,?,?,?,?,?);");
+						$stmt->bind_param("iiiiii", $idAccount, $idTeamOne, $idTeamTwo, $done, $votesTeamOne, $votesTeamTwo);
+						//Skapa match
+						$stmt->execute();
+
+						//Klar meddelande
+						header("Location: php/success.php?success-msg=En match mellan lagen ".$searchTeam." och ".$res." har skapats!");
+
+					} else {
+						echo '<div id="error-msg">
+							<p>Laget du försöker spela mot finns inte!</p>
+						</div>';
+					}
+
+					$stmt->close();
 
 				} else {
 					echo '<div id="error-msg">
-						<p>Laget du försöker spela mot finns inte!</p>
+						<p>Du kan inte skapa en match mot dig själv!</p>
 					</div>';
 				}
 
-				$stmt->close();
+				//Stäng anslutning
+				$conn->close();
 
-			} else {
+			} else if (isset($_POST['search-team'])) {
 				echo '<div id="error-msg">
-					<p>Du kan inte skapa en match mot dig själv!</p>
-				</div>';
+						<p>Ett lag namn måste fyllas i!</p>
+					</div>';
 			}
+			?>
+		<div id="login-form-container">
+			<form method="POST">
+				<header>
+				<h1>Skapa match</h1>
+			</header>
+				<div id="search-container">
+					<label id="my-team">Mitt lag</label>
+					<label>VS</label>
+					<input required type="text" name="search-team" oninput="loadTeam(this.value, <?php
+							echo $_SESSION['user-teamId'];
+						?>)">
+					<ul>
 
-			//Stäng anslutning
-			$conn->close();
-
-		} else if (isset($_POST['search-team'])) {
-			echo '<div id="error-msg">
-					<p>Ett lag namn måste fyllas i!</p>
-				</div>';
-		}
-		?>
-
-		<form method="POST">
-			<div id="search-container">
-				<label id="my-team">Mitt lag</label>
-				<label>VS</label>
-				<input required type="text" name="search-team" oninput="loadTeam(this.value, <?php
-						echo $_SESSION['user-teamId'];
-					?>)">
-				<ul>
-
-				</ul>
-			</div>
-			<button type="submit" name="create-match">Skapa match</button>
-		</form>
+					</ul>
+				</div>
+				<button type="submit" name="create-match">Skapa match</button>
+			</form>
+		</div>
 
 		<!--FOOTER-->
 		<?php

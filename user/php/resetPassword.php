@@ -132,24 +132,25 @@ else if(isset($_POST['reset'])){
 
 ?>
 		<!--FROM FÖR INLOGG-->
-		<form method="POST">
+			<form method="POST">
 
-			<header>
-				<h1>Återställ Lösenord</h1>
-			</header>
+				<header>
+					<h1>Återställ Lösenord</h1>
+				</header>
 
-			<div id="password-container">
-				<label for="password">Lösenord:</label>
-				<input required type="password" name="password" placeholder="Skriv lösenord">
+				<div id="password-container">
+					<label for="password">Lösenord:</label>
+					<input required type="password" name="password" placeholder="Skriv lösenord">
 
 
-				<label for="password-rep">Återupprepa lösenord:</label>
-				<input required type="password" name="password-rep" placeholder="Upprepa lösenord">
-			</div>
+					<label for="password-rep">Återupprepa lösenord:</label>
+					<input required type="password" name="password-rep" placeholder="Upprepa lösenord">
+				</div>
 
-			<button type="submit" name="reset">Återställ Lösenord</button>
+				<button type="submit" name="reset">Återställ Lösenord</button>
 
-		</form>
+			</form>
+
 
 </body>
 </html>

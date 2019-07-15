@@ -118,20 +118,20 @@ if ( isLoggedIn() ) {
 		?>
 
 		<!--FROM FÖR INLOGG-->
-		<form method="POST">
+			<form method="POST">
 
-			<header>
-				<h1>Återställ konto</h1>
-			</header>
+				<header>
+					<h1>Återställ konto</h1>
+				</header>
 
-			<div id=email-container>
-				<label for="email">Email:</label>
-				<input required type="email" name="email" placeholder="Skriv email address">
-			</div>
+				<div id=email-container>
+					<label for="email">Email:</label>
+					<input required type="email" name="email" placeholder="Skriv email address">
+				</div>
 
-			<button type="submit" name="reset">Återställ</button>
+				<button type="submit" name="reset">Återställ</button>
 
-		</form>
+			</form>
 
 	</body>
 </html>

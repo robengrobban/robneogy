@@ -3,9 +3,15 @@ header h1 {
 	text-align: center;
 	padding-top: 7%;
 }
+#login-form-container {
+	overflow: hidden;
+	position: relative;
+	z-index: 5;
+	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+}
 form {
 	width: 100%;
-	margin: 5% 0%;
+	margin: 5% 0% 15% 0%;
 	background: #ededed;
 	box-shadow: 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 }
@@ -77,8 +83,23 @@ form button:hover {
 
 /*DEKSTOP*/
 @media only screen and (min-width: 800px) {
+	header {
+		font-size: 1.5rem;
+	}
 	form {
 		width: 50%;
 		margin: 5% 25%;
+	}
+	form label {
+		font-size: 1.3rem;
+	}
+	form input {
+		font-size: 1.2rem;
+	}
+	form ul li a {
+		font-size: 1.1rem;
+	}
+	form button {
+		font-size: 1.4rem;
 	}
 }
