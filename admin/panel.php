@@ -19,7 +19,7 @@ if ( !isset($_SESSION['admin-loggedIn']) ) {
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 
 		<!--JQUERY LÄNK-->
-		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
 
 		<!--JS LÄNK-->
 		<script type="text/javascript" src="js/panel.js"></script>

@@ -80,7 +80,7 @@ $conn->close();
 		<link rel="stylesheet" type="text/css" href="css/match.css">
 
 		<!--JQUERY LÄNK-->
-		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
 
 		<!-- Funktion JS LÄNK-->
 		<script type="text/javascript" src="js/funktioner.js"></script>

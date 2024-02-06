@@ -31,7 +31,7 @@ else if ( !isset($_SESSION['user-teamId']) ) {
 		<link rel="stylesheet" type="text/css" href="css/skapamatch.css">
 
 		<!--JQUERY LÄNK-->
-		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
 
 		<!--SÖKNING MED JS-->
 		<script type="text/javascript" src="js/team.js"></script>
